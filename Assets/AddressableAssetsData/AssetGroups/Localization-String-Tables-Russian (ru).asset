@@ -15,12 +15,24 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Russian (ru)
   m_GUID: 9b39d5a840bd4d74c8cdbe864ed35732
   m_SerializeEntries:
+  - m_GUID: 0e03d62ac8e53f74fa6ac74e32769195
+    m_Address: gameplay_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62d2fcb84a602de41875d6ce473d887b
     m_Address: locading_screen_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7671269cd4da2e04bab84879eb5bd939
+    m_Address: garage_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2cc221e5e0f46f448b81353773da10f
     m_Address: main_menu_ru

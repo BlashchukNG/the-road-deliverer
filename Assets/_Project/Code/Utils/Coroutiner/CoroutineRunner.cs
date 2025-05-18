@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Utils.Coroutiner
+namespace Utils.Coroutiner
 {
 	public sealed class CoroutineRunner :
 		MonoBehaviour

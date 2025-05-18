@@ -1,11 +1,11 @@
-﻿using Code.Utils.Coroutiner;
-using Constants;
+﻿using Constants;
 using Infrastructure.DI;
 using Infrastructure.Services.AssetInstantiate;
 using Infrastructure.Services.ResourceLoader;
 using Infrastructure.Services.SceneLoader;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utils.Coroutiner;
 
 namespace Infrastructure.AppRoot
 {

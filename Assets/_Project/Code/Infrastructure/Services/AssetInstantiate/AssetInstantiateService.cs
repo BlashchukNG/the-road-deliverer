@@ -1,8 +1,8 @@
-using Code.Utils.Coroutiner;
 using Infrastructure.DI;
 using Infrastructure.Services.ResourceLoader;
 using UnityEngine;
 using UserCamera;
+using Utils.Coroutiner;
 
 namespace Infrastructure.Services.AssetInstantiate
 {

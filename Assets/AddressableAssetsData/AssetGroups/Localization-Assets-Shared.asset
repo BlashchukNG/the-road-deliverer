@@ -21,6 +21,18 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91aa5da21d81d5446ae32473cc8d0b84
+    m_Address: Assets/_Project/Resources/localization/tables/gameplay/gameplay Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bdc1478490af7a44288e10136fae5eba
+    m_Address: Assets/_Project/Resources/localization/tables/garage/garage Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f33eb54351d22094aaf1bdc1baba38c6
     m_Address: Assets/_Project/Resources/localization/tables/loading_screen/locading_screen
       Shared Data.asset
