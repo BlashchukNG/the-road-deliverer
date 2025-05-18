@@ -3,6 +3,8 @@ using Code.Utils.Coroutiner;
 using Constants;
 using Infrastructure.AppRoot;
 using Infrastructure.DI;
+using Infrastructure.Services.AssetInstantiate;
+using MainMenu.EntryPoint;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +14,7 @@ namespace Infrastructure.Services.SceneLoader
 	{
 		private readonly WaitForSeconds _delayBetweenScenes = new(InfrastructureConstants.DELAY_BETWEEN_SCENES);
 		private readonly WaitForSeconds _delayBeforeLoadScene = new(InfrastructureConstants.SHOW_HIDE_LOADING_SCREEN_DURATION);
-		
+
 		private readonly DIContainer _diContainer;
 		private readonly UIRootView _uiRootView;
 		private readonly CoroutineRunner _coroutineRunner;
@@ -24,10 +26,7 @@ namespace Infrastructure.Services.SceneLoader
 			_coroutineRunner = _diContainer.Resolve<CoroutineRunner>();
 		}
 
-		public void LoadMainMenu()
-		{
-			_coroutineRunner.StartCoroutine(LoadMainMenuRoutine());
-		}
+		public void LoadMainMenu() => _coroutineRunner.StartCoroutine(LoadMainMenuRoutine());
 
 		private IEnumerator LoadMainMenuRoutine()
 		{
@@ -39,11 +38,18 @@ namespace Infrastructure.Services.SceneLoader
 			yield return _delayBetweenScenes;
 
 			var isSettingsLoaded = false;
-			//load settings
-			
+
+			var mainMenuDiContainer = new DIContainer(_diContainer);
+
+			_diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
+
+			isSettingsLoaded = true;
+
 			yield return new WaitUntil(() => isSettingsLoaded);
 
-			// var sceneEntryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
+			Object.FindFirstObjectByType<MainMenuEntryPoint>()
+			      .Run(mainMenuDiContainer);
+
 			// sceneEntryPoint.Run(enterParams)
 			//                .Subscribe(exitParams =>
 			//                {

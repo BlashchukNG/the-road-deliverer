@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Constants;
 using Infrastructure.AppRoot;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UserCamera;
 
 namespace Infrastructure.Services.ResourceLoader
 {
@@ -23,9 +23,7 @@ namespace Infrastructure.Services.ResourceLoader
 		}
 
 		public UIRootView GetPrefabUIRootView() => Load<UIRootView>(ResourcesConstants.UI_ROOT_VIEW);
-
-		private T Load<T>(string name)
-			where T : Object =>
-			Resources.Load<T>(_resources[name]);
+		public CameraController GetPrefabCameraController() => Load<CameraController>(ResourcesConstants.CAMERA_CONTROLLER);
+		private T Load<T>(string name) where T : MonoBehaviour => Resources.Load<T>(_resources[name]);
 	}
 }

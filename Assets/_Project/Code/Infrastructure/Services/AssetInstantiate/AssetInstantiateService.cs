@@ -1,12 +1,18 @@
 using Code.Utils.Coroutiner;
+using Infrastructure.DI;
+using Infrastructure.Services.ResourceLoader;
 using UnityEngine;
+using UserCamera;
 
 namespace Infrastructure.Services.AssetInstantiate
 {
 	public class AssetInstantiateService : IAssetInstantiateService
 	{
-		public AssetInstantiateService()
+		private readonly DIContainer _diContainer;
+
+		public AssetInstantiateService(DIContainer diContainer)
 		{
+			_diContainer = diContainer;
 		}
 
 		public CoroutineRunner GetCoroutineRunner()
@@ -18,8 +24,10 @@ namespace Infrastructure.Services.AssetInstantiate
 			return coroutineRunner;
 		}
 
-		public T GetInstance<T>(T prefab, Transform root = null, Vector3 position = new Vector3(), Quaternion rotation = new Quaternion(), bool bisDontDestroyOnLoad = false)
-			where T : Component
+		public CameraController GetCameraController() => GetInstance(_diContainer.Resolve<IResourceLoaderService>().GetPrefabCameraController());
+
+		public T GetInstance<T>(T prefab, Transform root = null, Vector3 position = default, Quaternion rotation = default, bool bisDontDestroyOnLoad = false)
+			where T : MonoBehaviour
 		{
 			var instance = Object.Instantiate(prefab, position, Quaternion.identity, root);
 			if (bisDontDestroyOnLoad) Object.DontDestroyOnLoad(instance.gameObject);

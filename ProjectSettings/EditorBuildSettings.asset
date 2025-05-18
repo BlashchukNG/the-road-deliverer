@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/init/init.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_Project/Scenes/main menu/main menu.unity
+    guid: df626e1e76372a84d8c5beaf6fa9abe3
+  - enabled: 1
+    path: Assets/_Project/Scenes/garage/garage.unity
+    guid: 2dbc4fc860a640e45b2a6cc6f0f0a89b
+  - enabled: 1
+    path: Assets/_Project/Scenes/gameplay/gameplay.unity
+    guid: c83ff7fa00412e34097d6a2a9065c53d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: e171ff6ec1bf7f647a7d97e008b3f246, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

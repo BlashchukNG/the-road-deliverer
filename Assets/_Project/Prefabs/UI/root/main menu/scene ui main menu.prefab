@@ -97,6 +97,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 052ab5db65850aa48a56257ede3d9258, type: 3}
+--- !u!114 &1016438044301752989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 451041749360050038, guid: 052ab5db65850aa48a56257ede3d9258, type: 3}
+  m_PrefabInstance: {fileID: 601636342114649579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fb4c4b06534f66beb89eda2174c614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4010069843123673973 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4611633613053697694, guid: 052ab5db65850aa48a56257ede3d9258, type: 3}
@@ -112,7 +123,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2015924068369513324, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}
       propertyPath: m_Name
-      value: scene ui main menu Variant
+      value: scene ui main menu
       objectReference: {fileID: 0}
     - target: {fileID: 7007823945768403481, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}
       propertyPath: m_Pivot.x
@@ -200,8 +211,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8401276495465141208, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4010069843123673973}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2015924068369513324, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8379283387300016223}
   m_SourcePrefab: {fileID: 100100000, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}
+--- !u!1 &2697215540746906918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2015924068369513324, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}
+  m_PrefabInstance: {fileID: 4509351705434052170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8379283387300016223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697215540746906918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad243ded67984fda886d477ce9b1b8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonPlay: {fileID: 1016438044301752989}
 --- !u!224 &5333171297834435986 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8401276495465141208, guid: 631bf28b3d30f4f4cb213722082067dd, type: 3}

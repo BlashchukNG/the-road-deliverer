@@ -2,13 +2,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MainMenu.UI
+namespace GarageScene.UI
 {
-	public class MainMenuButton : MonoBehaviour
+	public class GarageButton : MonoBehaviour
 	{
-		public TMP_Text Label { get; }
-		public Button Button { get; }
-		public Image Image { get; }
+		public TMP_Text Label => _text;
+		public Button Button => _button;
+		public Image Image => _image;
 
 		[SerializeField] private Button _button;
 		[SerializeField] private TMP_Text _text;

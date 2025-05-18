@@ -1,4 +1,3 @@
-using System;
 using Constants;
 using DG.Tweening;
 using UnityEngine;
@@ -16,25 +15,21 @@ namespace Utils
 		{
 			TryGetComponent(out _canvas);
 			TryGetComponent(out _canvasGroup);
+
+			_canvasGroup.alpha = 0;
 		}
 
 
 		public void Show()
 		{
-			_canvasGroup.alpha = 0;
 			_canvas.enabled = true;
-			
 			_canvasGroup.DOFade(1, InfrastructureConstants.SHOW_HIDE_LOADING_SCREEN_DURATION);
 		}
 
 		public void Hide()
 		{
 			_canvasGroup.DOFade(0, InfrastructureConstants.SHOW_HIDE_LOADING_SCREEN_DURATION)
-			            .OnComplete(() =>
-			            {
-				            _canvasGroup.alpha = 0;
-				            _canvas.enabled = false;
-			            });
+			            .OnComplete(() => { _canvas.enabled = false; });
 		}
 	}
 }

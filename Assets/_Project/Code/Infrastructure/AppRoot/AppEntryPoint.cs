@@ -64,7 +64,7 @@ namespace Infrastructure.AppRoot
 
 		private void InitGeneralServices()
 		{
-			_assetInstantiateService = new AssetInstantiateService();
+			_assetInstantiateService = new AssetInstantiateService(_diContainer);
 			_diContainer.RegisterInstance(_assetInstantiateService);
 
 			_resourceLoaderService = new ResourceLoaderService();
