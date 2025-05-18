@@ -96,13 +96,9 @@ PrefabInstance:
       propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
       value: GUID:91aa5da21d81d5446ae32473cc8d0b84
       objectReference: {fileID: 0}
-    - target: {fileID: 847567007106738144, guid: 206e6f30ab509984bb9bed724db4b496, type: 3}
-      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 938202824797449605, guid: 206e6f30ab509984bb9bed724db4b496, type: 3}
       propertyPath: m_Name
-      value: b to main menu Variant
+      value: b to main menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

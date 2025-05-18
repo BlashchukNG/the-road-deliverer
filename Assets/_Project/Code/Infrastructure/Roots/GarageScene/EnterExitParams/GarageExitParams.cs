@@ -1,14 +1,14 @@
-using Infrastructure.Roots.MainMenuScene.EnterExitParams;
+using Infrastructure.AppRoot.Abstract;
 
 namespace Infrastructure.Roots.GarageScene.EnterExitParams
 {
 	public class GarageExitParams
 	{
-		public MainMenuEnterParams MainMenuEnterParams { get; }
+		public BaseSceneEnterParams TargetSceneEnterParams { get; }
 
-		public GarageExitParams(MainMenuEnterParams mainMenuEnterParams)
+		public GarageExitParams(BaseSceneEnterParams enterParams)
 		{
-			MainMenuEnterParams = mainMenuEnterParams;
+			TargetSceneEnterParams = enterParams;
 		}
 	}
 }

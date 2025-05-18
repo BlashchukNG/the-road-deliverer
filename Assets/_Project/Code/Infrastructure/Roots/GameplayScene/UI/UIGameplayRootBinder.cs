@@ -10,6 +10,7 @@ namespace Infrastructure.Roots.GameplayScene.UI
 		[SerializeField] private GameplayButton _buttonToMainMenu;
 
 		private Subject<Unit> _exitToMainMenuSubject;
+		private Subject<Unit> _exitToGarageSubject;
 
 		private void Awake()
 		{
@@ -17,9 +18,10 @@ namespace Infrastructure.Roots.GameplayScene.UI
 			_buttonToGarage.Button.AddOneListener(HandleButtonToGarageClicked);
 		}
 
-		public void Bind(Subject<Unit> exitToMainMenuSubject)
+		public void Bind(Subject<Unit> exitToMainMenuSubject, Subject<Unit> exitToGameplaySubject)
 		{
 			_exitToMainMenuSubject = exitToMainMenuSubject;
+			_exitToGarageSubject = exitToGameplaySubject;
 		}
 
 		public void HandleButtonToMainMenuClicked()
@@ -29,7 +31,7 @@ namespace Infrastructure.Roots.GameplayScene.UI
 
 		public void HandleButtonToGarageClicked()
 		{
-			//_exitToMainMenuSubject?.OnNext(Unit.Default);
+			_exitToGarageSubject?.OnNext(Unit.Default);
 		}
 	}
 }

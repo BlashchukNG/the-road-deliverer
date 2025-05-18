@@ -3,6 +3,7 @@ using Constants;
 using Infrastructure.AppRoot;
 using Infrastructure.DI;
 using Infrastructure.Roots.GameplayScene.EnterExitParams;
+using Infrastructure.Roots.GameplayScene.EntryPoint;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.GarageScene.EntryPoint;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
@@ -39,7 +40,7 @@ namespace Infrastructure.Services.SceneLoader
 		{
 			_uiRootView.ShowLoadingScreen();
 
-			yield return _delayBetweenScenes;
+			yield return _delayBeforeLoadScene;
 			yield return LoadScene(Scenes.BOOT);
 			yield return LoadScene(Scenes.MAIN_MENU);
 			yield return _delayBetweenScenes;
@@ -48,14 +49,16 @@ namespace Infrastructure.Services.SceneLoader
 
 			var mainMenuDiContainer = new DIContainer(_diContainer);
 
-			_diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
+			var camera = _diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
+			mainMenuDiContainer.RegisterInstance(camera);
 
 			isSettingsLoaded = true;
 
 			yield return new WaitUntil(() => isSettingsLoaded);
 
-			Object.FindFirstObjectByType<MainMenuEntryPoint>()
-			      .Run(mainMenuDiContainer, enterParams);
+			var entryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
+			entryPoint.Run(mainMenuDiContainer, enterParams)
+			          .Subscribe(exitParams => { LoadGarage(exitParams.GarageExitParams); });
 
 			_uiRootView.HideLoadingScreen();
 		}
@@ -70,7 +73,7 @@ namespace Infrastructure.Services.SceneLoader
 		{
 			_uiRootView.ShowLoadingScreen();
 
-			yield return _delayBetweenScenes;
+			yield return _delayBeforeLoadScene;
 			yield return LoadScene(Scenes.BOOT);
 			yield return LoadScene(Scenes.GARAGE);
 			yield return _delayBetweenScenes;
@@ -79,7 +82,8 @@ namespace Infrastructure.Services.SceneLoader
 
 			var garageDiContainer = new DIContainer(_diContainer);
 
-			_diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
+			var camera = _diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
+			garageDiContainer.RegisterInstance(camera);
 
 			isSettingsLoaded = true;
 
@@ -87,7 +91,19 @@ namespace Infrastructure.Services.SceneLoader
 
 			var sceneEntryPoint = Object.FindFirstObjectByType<GarageEntryPoint>();
 			sceneEntryPoint.Run(garageDiContainer, enterParams)
-			               .Subscribe(exitParams => { LoadMainMenu(exitParams.MainMenuEnterParams); });
+			               .Subscribe(exitParams =>
+			               {
+				               switch (exitParams.TargetSceneEnterParams.SceneName)
+				               {
+					               case Scenes.MAIN_MENU:
+						               LoadMainMenu(exitParams.TargetSceneEnterParams.As<MainMenuEnterParams>());
+						               break;
+
+					               case Scenes.GAMEPLAY:
+						               LoadGameplay(exitParams.TargetSceneEnterParams.As<GameplayEnterParams>());
+						               break;
+				               }
+			               });
 
 			_uiRootView.HideLoadingScreen();
 		}
@@ -96,8 +112,45 @@ namespace Infrastructure.Services.SceneLoader
 
 		#region Gameplay
 
-		public void LoadGameplay(GameplayEnterParams enterParams = null)
+		public void LoadGameplay(GameplayEnterParams enterParams = null) => _coroutineRunner.StartCoroutine(LoadGameplayRoutine(enterParams));
+		
+		private IEnumerator LoadGameplayRoutine(GameplayEnterParams enterParams)
 		{
+			_uiRootView.ShowLoadingScreen();
+
+			yield return _delayBeforeLoadScene;
+			yield return LoadScene(Scenes.BOOT);
+			yield return LoadScene(Scenes.GAMEPLAY);
+			yield return _delayBetweenScenes;
+
+			var isSettingsLoaded = false;
+
+			var gameplayDiContainer = new DIContainer(_diContainer);
+
+			var camera = _diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
+			gameplayDiContainer.RegisterInstance(camera);
+
+			isSettingsLoaded = true;
+
+			yield return new WaitUntil(() => isSettingsLoaded);
+
+			var sceneEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
+			sceneEntryPoint.Run(gameplayDiContainer, enterParams)
+			               .Subscribe(exitParams =>
+			               {
+				               switch (exitParams.TargetSceneEnterParams.SceneName)
+				               {
+					               case Scenes.MAIN_MENU:
+						               LoadMainMenu(exitParams.TargetSceneEnterParams.As<MainMenuEnterParams>());
+						               break;
+
+					               case Scenes.GARAGE:
+						               LoadGarage(exitParams.TargetSceneEnterParams.As<GarageEnterParams>());
+						               break;
+				               }
+			               });
+
+			_uiRootView.HideLoadingScreen();
 		}
 
 		#endregion

@@ -1,5 +1,6 @@
 using Infrastructure.AppRoot;
 using Infrastructure.DI;
+using Infrastructure.Roots.GameplayScene.EnterExitParams;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.GarageScene.UI;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
@@ -21,14 +22,23 @@ namespace Infrastructure.Roots.GarageScene.EntryPoint
 			var sceneUI = _diContainer.Resolve<IAssetInstantiateService>().GetInstance(_uiRootBinderPrefab);
 			_diContainer.Resolve<UIRootView>().AttachSceneUI(sceneUI.gameObject);
 
-			var exitToMainMenuSubject = new Subject<Unit>();
-			sceneUI.Bind(exitToMainMenuSubject);
-
+			var exitToMainMenuSignalSubject = new Subject<Unit>();
+			var exitToGameplaySignalSubject = new Subject<Unit>();
+			
+			sceneUI.Bind(exitToMainMenuSignalSubject, exitToGameplaySignalSubject);
+			
 			var mainMenuEnterParams = new MainMenuEnterParams("from garage");
-			var exitParams = new GarageExitParams(mainMenuEnterParams);
-			var exitToMainMenuSignal = exitToMainMenuSubject.Select(_ => exitParams);
+			var gameplayEnterParams = new GameplayEnterParams("from garage");
 
-			return exitToMainMenuSignal;
+			var exitToMainMenuParams = new GarageExitParams(mainMenuEnterParams);
+			var exitToGameplayParams = new GarageExitParams(gameplayEnterParams);
+			
+			var exitSignal = exitToMainMenuSignalSubject
+			                 .Select(_ => exitToMainMenuParams)
+			                 .Merge(exitToGameplaySignalSubject.Select(_ => exitToGameplayParams));
+
+			
+			return exitSignal;
 		}
 	}
 }

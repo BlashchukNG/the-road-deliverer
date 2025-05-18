@@ -1,5 +1,6 @@
 using Infrastructure.AppRoot;
 using Infrastructure.DI;
+using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.UI;
 using Infrastructure.Services.AssetInstantiate;
@@ -24,8 +25,8 @@ namespace Infrastructure.Roots.MainMenuScene.EntryPoint
 			sceneUI.Bind(exitToGarageSubject);
 
 			Debug.Log($"Entering main menu entry point: {enterParams?.DebugData}");
-			
-			var exitParams = new MainMenuExitParams();
+
+			var exitParams = new MainMenuExitParams(new GarageEnterParams("from main menu"));
 			var exitToGarageSignal = exitToGarageSubject.Select(_ => exitParams);
 
 			return exitToGarageSignal;

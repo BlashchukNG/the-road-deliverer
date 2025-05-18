@@ -1,12 +1,14 @@
+using Infrastructure.AppRoot.Abstract;
+
 namespace Infrastructure.Roots.GameplayScene.EnterExitParams
 {
 	public class GameplayExitParams
 	{
-		public string DebugData { get; }
+		public BaseSceneEnterParams TargetSceneEnterParams { get; }
 
-		public GameplayExitParams(string debugData)
+		public GameplayExitParams(BaseSceneEnterParams enterParams)
 		{
-			DebugData = debugData;
+			TargetSceneEnterParams = enterParams;
 		}
 	}
 }
