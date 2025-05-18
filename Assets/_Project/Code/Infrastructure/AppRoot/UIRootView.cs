@@ -1,35 +1,28 @@
 ﻿using UnityEngine;
+using Utils;
 
 namespace Infrastructure.AppRoot
 {
 	public sealed class UIRootView : MonoBehaviour
 	{
-		[SerializeField] private GameObject _loadingScreen;
+		[SerializeField] private CanvasShowHideController _loadingScreen;
 		[SerializeField] private Transform _uiSceneContainer;
 
 		private void Awake() => HideLoadingScreen();
 
-		public void ShowLoadingScreen()
-		{
-			_loadingScreen.SetActive(true);
-		}
+		public void ShowLoadingScreen() => _loadingScreen.Show();
+		public void HideLoadingScreen() => _loadingScreen.Hide();
 
-		public void HideLoadingScreen()
-		{
-			_loadingScreen.SetActive(false);
-		}
-
-		public void AttachSceneUI(GameObject scenUI)
+		public void AttachSceneUI(GameObject sceneUI)
 		{
 			ClearSceneUI();
-			scenUI.transform.SetParent(_uiSceneContainer, false);
+			sceneUI.transform.SetParent(_uiSceneContainer, false);
 		}
 
 		public void ClearSceneUI()
 		{
-			var childCount = _uiSceneContainer.childCount;
-			for (var i = 0; i < childCount; i++)
-				Destroy(_uiSceneContainer.GetChild(i).gameObject);
+			foreach (Transform child in _uiSceneContainer)
+				Destroy(child.gameObject);
 		}
 	}
 }
