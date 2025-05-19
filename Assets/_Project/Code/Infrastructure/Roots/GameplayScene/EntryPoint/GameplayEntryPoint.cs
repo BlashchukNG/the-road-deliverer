@@ -1,10 +1,10 @@
-using Infrastructure.AppRoot;
 using Infrastructure.DI;
+using Infrastructure.Roots.AppRoot;
+using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.GameplayScene.EnterExitParams;
-using Infrastructure.Roots.GameplayScene.UI;
+using Infrastructure.Roots.GameplayScene.View;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
-using Infrastructure.Services.AssetInstantiate;
 using R3;
 using UnityEngine;
 

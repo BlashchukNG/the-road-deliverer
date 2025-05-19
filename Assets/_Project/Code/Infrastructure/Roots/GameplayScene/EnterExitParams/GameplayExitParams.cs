@@ -1,4 +1,4 @@
-using Infrastructure.AppRoot.Abstract;
+using Infrastructure.Roots.AppRoot.Abstract;
 
 namespace Infrastructure.Roots.GameplayScene.EnterExitParams
 {
