@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiRootBinderPrefab: {fileID: 4155237582926826165, guid: d944173e5835868409e92d85d3b12703, type: 3}
+  _worldGarageViewPrefab: {fileID: 299906346981666788, guid: 87f43640ff360374dbfe498ced61c171, type: 3}
+  _playerPrefab: {fileID: 2219656790561801695, guid: a9830db77c6620c499852d8b0f683e4a, type: 3}

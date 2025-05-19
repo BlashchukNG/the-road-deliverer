@@ -1,11 +1,13 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot;
 using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
+using Infrastructure.Roots.AppRoot.Services.Updater;
 using Infrastructure.Roots.GameplayScene.EnterExitParams;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.GarageScene.Registrations;
 using Infrastructure.Roots.GarageScene.View;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
+using Logic.Characters.Player;
 using R3;
 using UnityEngine;
 
@@ -14,6 +16,11 @@ namespace Infrastructure.Roots.GarageScene.EntryPoint
 	public sealed class GarageEntryPoint : MonoBehaviour
 	{
 		[SerializeField] private UIGarageRootBinder _uiRootBinderPrefab;
+		
+		//----------Debug code----------
+		[SerializeField] private WorldGarageView _worldGarageViewPrefab;
+		[SerializeField] private PlayerView _playerPrefab;
+		//------------------------------
 
 		private DIContainer _diContainer;
 		private DIContainer _viewModelDIContainer;
@@ -27,6 +34,13 @@ namespace Infrastructure.Roots.GarageScene.EntryPoint
 
 			var sceneUI = _diContainer.Resolve<IAssetInstantiateService>().GetInstance(_uiRootBinderPrefab);
 			_diContainer.Resolve<UIRootView>().AttachSceneUI(sceneUI.gameObject);
+			
+			//----------Debug code----------
+			var worldView = _diContainer.Resolve<IAssetInstantiateService>().GetInstance(_worldGarageViewPrefab);
+			var player = _diContainer.Resolve<IAssetInstantiateService>().GetInstance(_playerPrefab, root: worldView.layerPlayer);
+			var playerViewModel = new PlayerViewModel(player, _viewModelDIContainer);
+			_diContainer.Resolve<IUpdateService>().Add(playerViewModel);
+			//------------------------------
 
 			var exitToMainMenuSignalSubject = new Subject<Unit>();
 			var exitToGameplaySignalSubject = new Subject<Unit>();
