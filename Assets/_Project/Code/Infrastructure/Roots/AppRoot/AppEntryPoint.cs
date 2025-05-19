@@ -3,6 +3,7 @@ using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.SceneLoader;
+using Infrastructure.State;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils.Coroutiner;
@@ -14,7 +15,7 @@ namespace Infrastructure.Roots.AppRoot
 		private static AppEntryPoint _instance;
 
 		private readonly DIContainer _diContainer = new();
-		
+
 		private UIRootView _uiRootView;
 		private CoroutineRunner _coroutineRunner;
 		private IResourceLoaderService _resourceLoaderService;
@@ -33,7 +34,6 @@ namespace Infrastructure.Roots.AppRoot
 
 		private AppEntryPoint()
 		{
-			InitGeneralServices();
 			InitServices();
 		}
 
@@ -48,6 +48,12 @@ namespace Infrastructure.Roots.AppRoot
 				case Scenes.MAIN_MENU:
 					sceneLoader.LoadMainMenu();
 					break;
+				case Scenes.GARAGE:
+					sceneLoader.LoadGarage();
+					break;
+				case Scenes.GAMEPLAY:
+					sceneLoader.LoadGameplay();
+					break;
 			}
 
 			if (sceneName != Scenes.BOOT)
@@ -57,7 +63,7 @@ namespace Infrastructure.Roots.AppRoot
 			sceneLoader.LoadMainMenu();
 		}
 
-		private void InitGeneralServices()
+		private void InitServices()
 		{
 			_assetInstantiateService = new AssetInstantiateService(_diContainer);
 			_diContainer.RegisterInstance(_assetInstantiateService);
@@ -70,12 +76,9 @@ namespace Infrastructure.Roots.AppRoot
 
 			_uiRootView = _assetInstantiateService.GetInstance(_resourceLoaderService.GetPrefabUIRootView(), bisDontDestroyOnLoad: true);
 			_diContainer.RegisterInstance(_uiRootView);
-		}
 
-		private void InitServices()
-		{
-			var sceneLoader = new SceneLoaderService(_diContainer) as ISceneLoaderService;
-			_diContainer.RegisterInstance(sceneLoader);
+			_diContainer.RegisterInstance<ISceneLoaderService>(new SceneLoaderService(_diContainer));
+			_diContainer.RegisterInstance<IGameStateProvider>(new PlayerPrefsGameStateProvider());
 		}
 	}
 }

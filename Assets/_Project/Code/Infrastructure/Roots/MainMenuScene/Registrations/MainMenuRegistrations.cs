@@ -7,7 +7,6 @@ namespace Infrastructure.Roots.MainMenuScene.Registrations
 	{
 		public static void Register(DIContainer diContainer, MainMenuEnterParams enterParams)
 		{
-			
 		}
 	}
 }
