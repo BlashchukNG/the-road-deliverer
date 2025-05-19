@@ -1,7 +1,7 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 
-namespace Infrastructure.Roots.GarageScene
+namespace Infrastructure.Roots.GarageScene.Registrations
 {
 	public static class GarageRegistrations
 	{
