@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Infrastructure.Roots.MainMenuScene.View
 {
-	public class UIMainMenuRootBinder : MonoBehaviour
+	public sealed class UIMainMenuRootBinder : MonoBehaviour
 	{
 		[SerializeField] private MainMenuButton _buttonPlay;
 

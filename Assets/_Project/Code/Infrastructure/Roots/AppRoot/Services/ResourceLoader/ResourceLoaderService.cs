@@ -6,7 +6,7 @@ using UserCamera;
 
 namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 {
-	public class ResourceLoaderService : IResourceLoaderService
+	public sealed class ResourceLoaderService : IResourceLoaderService
 	{
 		private readonly Dictionary<string, string> _resources = new();
 

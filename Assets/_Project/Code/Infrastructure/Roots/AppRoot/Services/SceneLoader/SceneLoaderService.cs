@@ -1,13 +1,13 @@
 using System.Collections;
 using Constants;
 using Infrastructure.DI;
-using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.GameplayScene.EnterExitParams;
 using Infrastructure.Roots.GameplayScene.EntryPoint;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.GarageScene.EntryPoint;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.EntryPoint;
+using Infrastructure.State;
 using R3;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,10 +15,10 @@ using Utils.Coroutiner;
 
 namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 {
-	public class SceneLoaderService : ISceneLoaderService
+	public sealed class SceneLoaderService : ISceneLoaderService
 	{
 		private DIContainer _cashedSceneDIContainer;
-		
+
 		private readonly WaitForSeconds _delayBetweenScenes = new(InfrastructureConstants.DELAY_BETWEEN_SCENES);
 		private readonly WaitForSeconds _delayBeforeLoadScene = new(InfrastructureConstants.SHOW_HIDE_LOADING_SCREEN_DURATION);
 
@@ -47,16 +47,16 @@ namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 			yield return LoadScene(Scenes.MAIN_MENU);
 			yield return _delayBetweenScenes;
 
-			var isSettingsLoaded = false;
 
 			var diContainer = _cashedSceneDIContainer = new DIContainer(_diContainer);
 
-			var camera = _diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
-			diContainer.RegisterInstance(camera);
+			var isGameStateLoaded = false;
+			_diContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+			var isGameSettingsStateLoaded = false;
+			_diContainer.Resolve<IGameStateProvider>().LoadGameSettingsState().Subscribe(_ => isGameSettingsStateLoaded = true);
 
-			isSettingsLoaded = true;
 
-			yield return new WaitUntil(() => isSettingsLoaded);
+			yield return new WaitUntil(() => isGameStateLoaded && isGameSettingsStateLoaded);
 
 			var entryPoint = Object.FindFirstObjectByType<MainMenuEntryPoint>();
 			entryPoint.Run(diContainer, enterParams)
@@ -81,16 +81,15 @@ namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 			yield return LoadScene(Scenes.GARAGE);
 			yield return _delayBetweenScenes;
 
-			var isSettingsLoaded = false;
-
 			var diContainer = _cashedSceneDIContainer = new DIContainer(_diContainer);
 
-			var camera = _diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
-			diContainer.RegisterInstance(camera);
+			var isGameStateLoaded = false;
+			_diContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+			var isGameSettingsStateLoaded = false;
+			_diContainer.Resolve<IGameStateProvider>().LoadGameSettingsState().Subscribe(_ => isGameSettingsStateLoaded = true);
 
-			isSettingsLoaded = true;
 
-			yield return new WaitUntil(() => isSettingsLoaded);
+			yield return new WaitUntil(() => isGameStateLoaded && isGameSettingsStateLoaded);
 
 			var sceneEntryPoint = Object.FindFirstObjectByType<GarageEntryPoint>();
 			sceneEntryPoint.Run(diContainer, enterParams)
@@ -116,7 +115,7 @@ namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 		#region Gameplay
 
 		public void LoadGameplay(GameplayEnterParams enterParams = null) => _coroutineRunner.StartCoroutine(LoadGameplayRoutine(enterParams));
-		
+
 		private IEnumerator LoadGameplayRoutine(GameplayEnterParams enterParams)
 		{
 			_uiRootView.ShowLoadingScreen();
@@ -127,16 +126,14 @@ namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 			yield return LoadScene(Scenes.GAMEPLAY);
 			yield return _delayBetweenScenes;
 
-			var isSettingsLoaded = false;
-
 			var diContainer = _cashedSceneDIContainer = new DIContainer(_diContainer);
 
-			var camera = _diContainer.Resolve<IAssetInstantiateService>().GetCameraController();
-			diContainer.RegisterInstance(camera);
+			var isGameStateLoaded = false;
+			_diContainer.Resolve<IGameStateProvider>().LoadGameState().Subscribe(_ => isGameStateLoaded = true);
+			var isGameSettingsStateLoaded = false;
+			_diContainer.Resolve<IGameStateProvider>().LoadGameSettingsState().Subscribe(_ => isGameSettingsStateLoaded = true);
 
-			isSettingsLoaded = true;
-
-			yield return new WaitUntil(() => isSettingsLoaded);
+			yield return new WaitUntil(() => isGameStateLoaded && isGameSettingsStateLoaded);
 
 			var sceneEntryPoint = Object.FindFirstObjectByType<GameplayEntryPoint>();
 			sceneEntryPoint.Run(diContainer, enterParams)

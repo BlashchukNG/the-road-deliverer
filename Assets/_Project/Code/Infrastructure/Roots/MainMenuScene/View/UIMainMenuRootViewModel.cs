@@ -1,6 +1,6 @@
 namespace Infrastructure.Roots.MainMenuScene.View
 {
-	public class UIMainMenuRootViewModel
+	public sealed class UIMainMenuRootViewModel
 	{
 		
 	}

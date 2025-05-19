@@ -3,7 +3,7 @@ using Infrastructure.Roots.AppRoot.Abstract;
 
 namespace Infrastructure.Roots.MainMenuScene.EnterExitParams
 {
-	public class MainMenuEnterParams : BaseSceneEnterParams
+	public sealed class MainMenuEnterParams : BaseSceneEnterParams
 	{
 		public string DebugData { get; }
 

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Infrastructure.Roots.MainMenuScene.EntryPoint
 {
-	public class MainMenuEntryPoint : MonoBehaviour
+	public sealed class MainMenuEntryPoint : MonoBehaviour
 	{
 		[SerializeField] private UIMainMenuRootBinder _uiRootBinderPrefab;
 

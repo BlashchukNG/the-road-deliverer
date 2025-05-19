@@ -2,7 +2,7 @@ using Infrastructure.Roots.AppRoot.Abstract;
 
 namespace Infrastructure.Roots.GameplayScene.EnterExitParams
 {
-	public class GameplayExitParams
+	public sealed class GameplayExitParams
 	{
 		public BaseSceneEnterParams TargetSceneEnterParams { get; }
 

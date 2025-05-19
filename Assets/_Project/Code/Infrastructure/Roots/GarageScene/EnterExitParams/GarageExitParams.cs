@@ -2,7 +2,7 @@ using Infrastructure.Roots.AppRoot.Abstract;
 
 namespace Infrastructure.Roots.GarageScene.EnterExitParams
 {
-	public class GarageExitParams
+	public sealed class GarageExitParams
 	{
 		public BaseSceneEnterParams TargetSceneEnterParams { get; }
 

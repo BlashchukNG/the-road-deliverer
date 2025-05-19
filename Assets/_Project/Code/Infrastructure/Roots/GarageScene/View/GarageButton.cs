@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Infrastructure.Roots.GarageScene.View
 {
-	public class GarageButton : MonoBehaviour
+	public sealed class GarageButton : MonoBehaviour
 	{
 		public TMP_Text Label => _text;
 		public Button Button => _button;

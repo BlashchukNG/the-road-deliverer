@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Infrastructure.Roots.GameplayScene.View
 {
-	public class UIGameplayRootBinder : MonoBehaviour
+	public sealed class UIGameplayRootBinder : MonoBehaviour
 	{
 		[SerializeField] private GameplayButton _buttonToGarage;
 		[SerializeField] private GameplayButton _buttonToMainMenu;

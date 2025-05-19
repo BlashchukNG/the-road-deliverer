@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Infrastructure.Roots.GameplayScene.View
 {
-	public class GameplayButton : MonoBehaviour
+	public sealed class GameplayButton : MonoBehaviour
 	{
 		public TMP_Text Label => _text;
 		public Button Button => _button;
