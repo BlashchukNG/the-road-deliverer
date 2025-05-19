@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 {
 	[CreateAssetMenu(fileName = "config general resources", menuName = "Configs/GeneralResourcesConfig", order = 0)]
-	public class GeneralResourcesConfig : ScriptableObject
+	public sealed class GeneralResourcesConfig : ScriptableObject
 	{
 		public ResourcePath[] resources;
 	}

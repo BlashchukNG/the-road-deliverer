@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Infrastructure.Roots.MainMenuScene.View
 {
-	public class MainMenuButton : MonoBehaviour
+	public sealed class MainMenuButton : MonoBehaviour
 	{
 		public TMP_Text Label => _text;
 		public Button Button => _button;

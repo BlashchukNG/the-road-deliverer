@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Infrastructure.Roots.GameplayScene.EntryPoint
 {
-	public class GameplayEntryPoint : MonoBehaviour
+	public sealed class GameplayEntryPoint : MonoBehaviour
 	{
 		[SerializeField] private UIGameplayRootBinder _uiRootBinderPrefab;
 

@@ -6,7 +6,7 @@ using Utils.Coroutiner;
 
 namespace Infrastructure.Roots.AppRoot.Services.AssetInstantiate
 {
-	public class AssetInstantiateService : IAssetInstantiateService
+	public sealed class AssetInstantiateService : IAssetInstantiateService
 	{
 		private readonly DIContainer _diContainer;
 

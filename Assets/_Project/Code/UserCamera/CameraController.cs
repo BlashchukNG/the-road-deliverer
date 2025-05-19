@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UserCamera
 {
-	public class CameraController : MonoBehaviour
+	public sealed class CameraController : MonoBehaviour
 	{
 		public Camera Camera => _camera;
 

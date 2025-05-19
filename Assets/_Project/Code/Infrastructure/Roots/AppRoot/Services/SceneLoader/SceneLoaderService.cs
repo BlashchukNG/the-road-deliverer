@@ -15,7 +15,7 @@ using Utils.Coroutiner;
 
 namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 {
-	public class SceneLoaderService : ISceneLoaderService
+	public sealed class SceneLoaderService : ISceneLoaderService
 	{
 		private DIContainer _cashedSceneDIContainer;
 		

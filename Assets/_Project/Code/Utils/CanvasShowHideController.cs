@@ -6,7 +6,7 @@ namespace Utils
 {
 	[RequireComponent(typeof(Canvas))]
 	[RequireComponent(typeof(CanvasGroup))]
-	public class CanvasShowHideController : MonoBehaviour
+	public sealed class CanvasShowHideController : MonoBehaviour
 	{
 		private Canvas _canvas;
 		private CanvasGroup _canvasGroup;

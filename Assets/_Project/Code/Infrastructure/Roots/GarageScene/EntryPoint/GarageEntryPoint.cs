@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Infrastructure.Roots.GarageScene.EntryPoint
 {
-	public class GarageEntryPoint : MonoBehaviour
+	public sealed class GarageEntryPoint : MonoBehaviour
 	{
 		[SerializeField] private UIGarageRootBinder _uiRootBinderPrefab;
 

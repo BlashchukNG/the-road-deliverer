@@ -2,7 +2,7 @@ using Infrastructure.Roots.GarageScene.EnterExitParams;
 
 namespace Infrastructure.Roots.MainMenuScene.EnterExitParams
 {
-	public class MainMenuExitParams
+	public sealed class MainMenuExitParams
 	{
 		public GarageEnterParams GarageExitParams { get; }
 

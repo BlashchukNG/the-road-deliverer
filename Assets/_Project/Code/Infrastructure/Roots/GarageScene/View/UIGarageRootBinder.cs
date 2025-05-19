@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Infrastructure.Roots.GarageScene.View
 {
-	public class UIGarageRootBinder : MonoBehaviour
+	public sealed class UIGarageRootBinder : MonoBehaviour
 	{
 		[SerializeField] private GarageButton _buttonToMainMenu;
 		[SerializeField] private GarageButton _buttonToGameplay;

@@ -3,7 +3,7 @@ using Infrastructure.Roots.AppRoot.Abstract;
 
 namespace Infrastructure.Roots.GameplayScene.EnterExitParams
 {
-	public class GameplayEnterParams : BaseSceneEnterParams
+	public sealed class GameplayEnterParams : BaseSceneEnterParams
 	{
 		public string DebugData { get; }
 		
