@@ -1,9 +1,10 @@
 ﻿using System;
+using Infrastructure.Roots.AppRoot.Services.Updater;
 using UnityEngine;
 
 namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 {
-	public class MobileUserInputService : MonoBehaviour, IUserInputService
+	public class MobileUserInputService : IUserInputService, ITick
 	{
 		public GameObject GameObject { get; }
 		public event Action<Vector2> OnMouseButtonDown;
@@ -18,6 +19,11 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 		}
 
 		public Vector2 MousePosition()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Tick(float delta)
 		{
 			throw new NotImplementedException();
 		}

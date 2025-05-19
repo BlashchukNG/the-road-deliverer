@@ -7,6 +7,7 @@ namespace Infrastructure.Roots.GarageScene.Registrations
 	{
 		public static void Register(DIContainer diContainer, GarageEnterParams enterParams)
 		{
+			
 		}
 	}
 }

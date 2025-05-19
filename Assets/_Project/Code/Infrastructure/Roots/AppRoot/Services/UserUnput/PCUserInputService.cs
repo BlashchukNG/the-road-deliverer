@@ -1,19 +1,18 @@
 ﻿using System;
+using Infrastructure.Roots.AppRoot.Services.Updater;
 using UnityEngine;
 
 namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 {
-	public class PCUserInputService : MonoBehaviour, IUserInputService
+	public class PCUserInputService : IUserInputService, ITick
 	{
-		public GameObject GameObject => gameObject;
-
 		public event Action<Vector2> OnMouseButtonDown = vector2 => { };
 
 		public float HorizontalAxis() => Input.GetAxis("Horizontal");
 		public float VerticalAxis() => Input.GetAxis("Vertical");
 		public Vector2 MousePosition() => Input.mousePosition;
 
-		private void Update()
+		public void Tick(float delta)
 		{
 			if (Input.GetMouseButtonDown(0)) OnMouseButtonDown.Invoke(Input.mousePosition);
 		}

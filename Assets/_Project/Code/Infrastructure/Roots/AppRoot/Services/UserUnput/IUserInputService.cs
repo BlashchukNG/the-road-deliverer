@@ -1,11 +1,11 @@
 ﻿using System;
+using Infrastructure.Roots.AppRoot.Services.Updater;
 using UnityEngine;
 
 namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 {
-	public interface IUserInputService
+	public interface IUserInputService : ITick
 	{
-		public GameObject GameObject { get; }
 		public event Action<Vector2> OnMouseButtonDown;
 		public float HorizontalAxis();
 		public float VerticalAxis();

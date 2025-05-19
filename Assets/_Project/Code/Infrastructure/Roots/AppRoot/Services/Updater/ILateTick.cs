@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Roots.AppRoot.Updater
+﻿namespace Infrastructure.Roots.AppRoot.Services.Updater
 {
     public interface ILateTick
     {
