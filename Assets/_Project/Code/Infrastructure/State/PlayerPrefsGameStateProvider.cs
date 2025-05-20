@@ -45,7 +45,7 @@ namespace Infrastructure.State
 
 		private GameStateProxy CreateGameStateFromSettings()
 		{
-			_gameStateOrigin = _saveFileConfig.state;
+			_gameStateOrigin = _saveFileConfig.state.Clone() as GameState;
 
 			Debug.Log($"GameStateProvider: state created from settings: {JsonUtility.ToJson(_gameStateOrigin, true)}");
 

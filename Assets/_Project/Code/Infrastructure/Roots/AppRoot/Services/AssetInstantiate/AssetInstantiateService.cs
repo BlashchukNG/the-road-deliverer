@@ -1,8 +1,8 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.Updater;
+using Logic.UserCamera;
 using UnityEngine;
-using UserCamera;
 using Utils.Coroutiner;
 
 namespace Infrastructure.Roots.AppRoot.Services.AssetInstantiate

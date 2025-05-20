@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Constants;
 using Infrastructure.State;
 using Infrastructure.State.Entities.Player.Characteristics;
+using Logic.UserCamera;
 using UnityEngine;
-using UserCamera;
 
 namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 {

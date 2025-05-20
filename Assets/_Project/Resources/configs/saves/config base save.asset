@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state:
     version: 1.0
+    cameraSettings:
+      offset: {x: 0, y: 20, z: -10}
+      distance: 10
+      minDistance: 5
+      maxDistance: 30
+      rotationSpeed: 100
+      yaw: 0
+      zoomSpeed: 200
     player:
       id: 0
       typeId: player_0

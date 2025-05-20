@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Roots.AppRoot.Services.Updater
 {
-    public interface ILateTick
+    public interface ILateTick : IUpdatable
     {
         void LateTick(float delta);
     }

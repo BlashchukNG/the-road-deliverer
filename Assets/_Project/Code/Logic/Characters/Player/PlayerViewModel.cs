@@ -2,6 +2,7 @@ using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.UserUnput;
 using Infrastructure.State;
 using Logic.Characters.Base;
+using Logic.UserCamera;
 using UnityEngine;
 
 namespace Logic.Characters.Player
@@ -15,7 +16,9 @@ namespace Logic.Characters.Player
 		{
 			_input = diContainer.Resolve<IUserInputService>();
 			CreateModel(diContainer.Resolve<IGameStateProvider>().GameState.Player.CharacteristicsData);
-			_locomotion = new GroundLocomotion(_view, _model, Camera.allCameras[0]);
+			var camera = diContainer.Resolve<CameraController>();
+			camera.SetFollowTarget(_view.Transform);
+			_locomotion = new GroundLocomotion(_view, _model, camera.transform);
 
 			_view.onDestroy += Destroy;
 			AttachInput();

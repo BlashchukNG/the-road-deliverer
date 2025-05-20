@@ -11,6 +11,16 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 		public event Action<bool> OnCrouch;
 		public event Action OnJump;
 
+		public float HorizontalMouseAxis()
+		{
+			throw new NotImplementedException();
+		}
+
+		public float GetMouseScrollWheel()
+		{
+			throw new NotImplementedException();
+		}
+
 		public float HorizontalAxis()
 		{
 			throw new NotImplementedException();

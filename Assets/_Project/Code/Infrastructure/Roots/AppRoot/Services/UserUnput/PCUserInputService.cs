@@ -12,6 +12,9 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 		public event Action OnJump = () => { };
 
 
+		public float HorizontalMouseAxis() => Input.GetMouseButton(1) ? Input.GetAxis("Mouse X") : 0;
+		public float GetMouseScrollWheel() => Input.GetAxis("Mouse ScrollWheel");
+
 		public float HorizontalAxis() => Input.GetAxis("Horizontal");
 		public float VerticalAxis() => Input.GetAxis("Vertical");
 		public Vector2 MousePosition() => Input.mousePosition;
@@ -24,7 +27,7 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 
 			if (Input.GetKeyDown(KeyCode.LeftShift)) OnRun.Invoke(true);
 			if (Input.GetKeyUp(KeyCode.LeftShift)) OnRun.Invoke(false);
-			
+
 			if (Input.GetKeyDown(KeyCode.LeftControl)) OnCrouch.Invoke(true);
 			if (Input.GetKeyUp(KeyCode.LeftControl)) OnCrouch.Invoke(false);
 		}

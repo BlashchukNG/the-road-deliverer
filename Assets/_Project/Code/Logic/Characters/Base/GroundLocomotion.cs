@@ -17,11 +17,11 @@ namespace Logic.Characters.Base
 		private bool _isRunning;
 		private bool _isJumping;
 
-		public GroundLocomotion(ICharacterView view, CharacterModel model, Camera camera)
+		public GroundLocomotion(ICharacterView view, CharacterModel model, Transform camera)
 		{
 			_view = view;
 			_model = model;
-			_camera = camera.transform;
+			_camera = camera;
 
 			_targetSpeed = model.Characteristics.MoveSpeed;
 		}

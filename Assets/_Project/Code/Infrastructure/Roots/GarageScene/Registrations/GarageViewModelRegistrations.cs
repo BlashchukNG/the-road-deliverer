@@ -4,7 +4,9 @@ using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.AppRoot.Services.Updater;
 using Infrastructure.Roots.AppRoot.Services.UserUnput;
 using Infrastructure.Roots.GarageScene.View;
+using Logic.UserCamera;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Infrastructure.Roots.GarageScene.Registrations
 {
@@ -16,6 +18,8 @@ namespace Infrastructure.Roots.GarageScene.Registrations
 			diContainer.RegisterInstance(updater);
 
 			RegisterInputService(diContainer);
+			diContainer.RegisterInstance(Object.FindFirstObjectByType<CameraController>().SetInput(diContainer));
+			diContainer.Resolve<IUpdateService>().Add(diContainer.Resolve<CameraController>());
 
 			diContainer.RegisterFactory(c => new UIGarageViewModel()).AsSingle();
 			diContainer.RegisterFactory(c => new WorldGarageViewModel()).AsSingle();
