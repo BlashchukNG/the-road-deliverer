@@ -6,7 +6,7 @@ namespace Logic.Characters.Player
 {
 	public sealed class PlayerView : MonoBehaviour, ICharacterView
 	{
-		public Transform Transform => transform;
+		public Transform Transform => _characterController.transform;
 		public CharacterController CharacterController => _characterController;
 		public Animator Animator => _animator;
 		public event Action onDestroy;

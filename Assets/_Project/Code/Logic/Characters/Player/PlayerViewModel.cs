@@ -15,7 +15,7 @@ namespace Logic.Characters.Player
 		{
 			_input = diContainer.Resolve<IUserInputService>();
 			CreateModel(diContainer.Resolve<IGameStateProvider>().GameState.Player.CharacteristicsData);
-			_locomotion = new GroundLocomotion(_view, _model);
+			_locomotion = new GroundLocomotion(_view, _model, Camera.allCameras[0]);
 
 			_view.onDestroy += Destroy;
 			AttachInput();

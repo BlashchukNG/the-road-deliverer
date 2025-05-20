@@ -73,12 +73,12 @@ namespace Infrastructure.State.Entities.Player.Characteristics.Proxy
 
 		private float LinearProgression() =>
 			_modToLinearProgression == 0
-				? _modToLinearProgression = CharacteristicConstans.TO_LINEAR_PROGRESSION * Level.Value
+				? _modToLinearProgression = CharacteristicConstants.TO_LINEAR_PROGRESSION * Level.Value
 				: _modToLinearProgression;
 
 		private float QuadraticProgression() =>
 			_modToQuadraticProgression == 0
-				? _modToQuadraticProgression = CharacteristicConstans.TO_QUADRATIC_PROGRESSION * Mathf.Pow(Level.Value, 2)
+				? _modToQuadraticProgression = CharacteristicConstants.TO_QUADRATIC_PROGRESSION * Mathf.Pow(Level.Value, 2)
 				: _modToQuadraticProgression;
 	}
 }
