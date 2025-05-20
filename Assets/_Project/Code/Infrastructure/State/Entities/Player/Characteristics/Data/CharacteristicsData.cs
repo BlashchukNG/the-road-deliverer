@@ -1,12 +1,18 @@
 using System;
-using UnityEngine;
 
 namespace Infrastructure.State.Entities.Player.Characteristics.Data
 {
 	[Serializable]
-	public sealed class CharacteristicsData : MonoBehaviour
+	public sealed class CharacteristicsData
 	{
 		public PrimaryCharacteristics primary;
 		public SecondaryCharacteristics secondary;
+
+
+		public CharacteristicsData(PrimaryCharacteristics primary, SecondaryCharacteristics secondary)
+		{
+			this.primary = primary;
+			this.secondary = secondary;
+		}
 	}
 }

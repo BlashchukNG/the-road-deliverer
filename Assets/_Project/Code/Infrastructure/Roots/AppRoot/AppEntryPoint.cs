@@ -1,11 +1,8 @@
-﻿using System;
-using Constants;
+﻿using Constants;
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.SceneLoader;
-using Infrastructure.Roots.AppRoot.Services.Updater;
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
 using Infrastructure.State;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -81,7 +78,7 @@ namespace Infrastructure.Roots.AppRoot
 			_diContainer.RegisterInstance(_uiRootView);
 
 			_diContainer.RegisterInstance<ISceneLoaderService>(new SceneLoaderService(_diContainer));
-			_diContainer.RegisterInstance<IGameStateProvider>(new PlayerPrefsGameStateProvider());
+			_diContainer.RegisterInstance<IGameStateProvider>(new PlayerPrefsGameStateProvider(_diContainer));
 		}
 	}
 }

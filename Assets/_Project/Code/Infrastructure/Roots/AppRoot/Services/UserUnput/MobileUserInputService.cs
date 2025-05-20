@@ -6,8 +6,11 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 {
 	public class MobileUserInputService : IUserInputService, ITick
 	{
-		public GameObject GameObject { get; }
 		public event Action<Vector2> OnMouseButtonDown;
+		public event Action<bool> OnRun;
+		public event Action<bool> OnCrouch;
+		public event Action OnJump;
+
 		public float HorizontalAxis()
 		{
 			throw new NotImplementedException();

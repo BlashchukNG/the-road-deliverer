@@ -7,6 +7,10 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 	public class PCUserInputService : IUserInputService, ITick
 	{
 		public event Action<Vector2> OnMouseButtonDown = vector2 => { };
+		public event Action<bool> OnRun = b => { };
+		public event Action<bool> OnCrouch = b => { };
+		public event Action OnJump = () => { };
+
 
 		public float HorizontalAxis() => Input.GetAxis("Horizontal");
 		public float VerticalAxis() => Input.GetAxis("Vertical");
@@ -15,6 +19,14 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 		public void Tick(float delta)
 		{
 			if (Input.GetMouseButtonDown(0)) OnMouseButtonDown.Invoke(Input.mousePosition);
+
+			if (Input.GetKeyDown(KeyCode.Space)) OnJump.Invoke();
+
+			if (Input.GetKeyDown(KeyCode.LeftShift)) OnRun.Invoke(true);
+			if (Input.GetKeyUp(KeyCode.LeftShift)) OnRun.Invoke(false);
+			
+			if (Input.GetKeyDown(KeyCode.LeftControl)) OnCrouch.Invoke(true);
+			if (Input.GetKeyUp(KeyCode.LeftControl)) OnCrouch.Invoke(false);
 		}
 	}
 }

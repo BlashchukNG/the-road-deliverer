@@ -12,6 +12,7 @@ namespace Logic.Characters.Base
 
 		//Calculated
 		public float MoveSpeed { get; private set; }
+		public float JumpHeight { get; private set; }
 		public float MaxWeight { get; private set; }
 
 		public float Weight { get; private set; }
@@ -20,6 +21,9 @@ namespace Logic.Characters.Base
 		{
 			_characteristics = data;
 			data.Primary.Strength.Level.Subscribe(_ => Calculate(data.Primary.Strength));
+
+			MoveSpeed = CalculateMoveSpeed();
+			JumpHeight = CalculateJumpHeight();
 		}
 
 		public void Calculate(CharacteristicProxy data)
@@ -60,29 +64,36 @@ namespace Logic.Characters.Base
 			CalculateMoveSpeed();
 		}
 
-		private void CalculateMoveSpeed()
+		private float CalculateMoveSpeed()
 		{
-			// Базовые параметры
-			var dexterityCoefficient = 0.1f;    // Коэффициент ловкости (k_A)
-			var athleticsCoefficient = 0.08f; // Коэффициент атлетизма (k_Ath)
-			var baseSpeed = 6.0f;             // Базовая скорость
+			// // Базовые параметры
+			// var dexterityCoefficient = 0.1f;    // Коэффициент ловкости (k_A)
+			// var athleticsCoefficient = 0.08f; // Коэффициент атлетизма (k_Ath)
+			// var baseSpeed = 6.0f;             // Базовая скорость
+			//
+			// // Характеристики персонажа
+			// var dexterity = _characteristics.Primary.Dexterity.Level.Value;     // Ловкость (A)
+			// var athletics = _characteristics.Secondary.Athleticism.Level.Value; // Атлетизм (Ath)
+			//
+			// // Вес экипировки
+			// var currentWeight = Weight; // Текущий вес (Weight)
+			// var maxWeight = MaxWeight;     // Макс. грузоподъемность (MaxWeight)
+			//
+			// // Расчет скорости по формуле
+			// float numerator = baseSpeed +
+			//                   (dexterityCoefficient * dexterity) +
+			//                   (athleticsCoefficient * athletics);
+			//
+			// float denominator = 1.0f + (currentWeight / maxWeight);
+			//
+			// MoveSpeed = numerator / denominator;
 
-			// Характеристики персонажа
-			var dexterity = _characteristics.Primary.Dexterity.Level.Value;     // Ловкость (A)
-			var athletics = _characteristics.Secondary.Athleticism.Level.Value; // Атлетизм (Ath)
+			return 5f;
+		}
 
-			// Вес экипировки
-			var currentWeight = Weight; // Текущий вес (Weight)
-			var maxWeight = MaxWeight;     // Макс. грузоподъемность (MaxWeight)
-
-			// Расчет скорости по формуле
-			float numerator = baseSpeed +
-			                  (dexterityCoefficient * dexterity) +
-			                  (athleticsCoefficient * athletics);
-
-			float denominator = 1.0f + (currentWeight / maxWeight);
-
-			MoveSpeed = numerator / denominator;
+		private float CalculateJumpHeight()
+		{
+			return 2.0f;
 		}
 	}
 }

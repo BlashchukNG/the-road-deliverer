@@ -39,7 +39,7 @@ namespace Infrastructure.Roots.GarageScene.EntryPoint
 			var worldView = _diContainer.Resolve<IAssetInstantiateService>().GetInstance(_worldGarageViewPrefab);
 			var player = _diContainer.Resolve<IAssetInstantiateService>().GetInstance(_playerPrefab, root: worldView.layerPlayer);
 			var playerViewModel = new PlayerViewModel(player, _viewModelDIContainer);
-			_diContainer.Resolve<IUpdateService>().Add(playerViewModel);
+			_viewModelDIContainer.Resolve<IUpdateService>().Add(playerViewModel);
 			//------------------------------
 
 			var exitToMainMenuSignalSubject = new Subject<Unit>();
