@@ -88,7 +88,7 @@ namespace Logic.Characters.Base
 			//
 			// MoveSpeed = numerator / denominator;
 
-			return 5f;
+			return 2.5f;
 		}
 
 		private float CalculateJumpHeight()

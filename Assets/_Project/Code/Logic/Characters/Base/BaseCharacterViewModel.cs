@@ -1,5 +1,6 @@
 using Infrastructure.Roots.AppRoot.Services.Updater;
 using Infrastructure.State.Entities.Player.Characteristics.Proxy;
+using Logic.Characters.Base.Locomotion;
 
 namespace Logic.Characters.Base
 {

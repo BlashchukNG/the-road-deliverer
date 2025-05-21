@@ -1,24 +1,28 @@
 using Constants;
+using Logic.UserCamera;
 using UnityEngine;
 
-namespace Logic.Characters.Base
+namespace Logic.Characters.Base.Locomotion
 {
 	public sealed class GroundLocomotion : ICharacterLocomotion
 	{
 		private readonly ICharacterView _view;
 		private readonly CharacterModel _model;
-		private readonly Transform _camera;
+		private readonly CameraController _camera;
 
 		private Vector3 _velocity;
+		private Vector3 _direction;
 		private float _targetSpeed;
 		private float _standingHeight = 1.8f;
 		private float _crouchingHeight = 1.0f;
-		private float _directionChangeThreshold = 10f;
 		private bool _isCrouching;
 		private bool _isRunning;
 		private bool _isJumping;
 
-		public GroundLocomotion(ICharacterView view, CharacterModel model, Transform camera)
+		public Vector3 RelativityDirection => _view.Transform.InverseTransformDirection(new Vector3(_direction.x, 0, _direction.z).normalized * (_isRunning ? 1 : 0.5f));
+
+
+		public GroundLocomotion(ICharacterView view, CharacterModel model, CameraController camera)
 		{
 			_view = view;
 			_model = model;
@@ -27,14 +31,14 @@ namespace Logic.Characters.Base
 			_targetSpeed = model.Characteristics.MoveSpeed;
 		}
 
-		public void Move(float horizontalAxis, float verticalAxis, float delta)
+		public void Move(Vector2 mousePosition, float horizontalAxis, float verticalAxis, float delta)
 		{
-			var forward = Vector3.Scale(_camera.forward, new Vector3(1, 0, 1)).normalized;
-			var right = Vector3.Scale(_camera.right, new Vector3(1, 0, 1)).normalized;
+			var forward = Vector3.Scale(_camera.transform.forward, new Vector3(1, 0, 1)).normalized;
+			var right = Vector3.Scale(_camera.transform.right, new Vector3(1, 0, 1)).normalized;
 
-			var direction = forward * verticalAxis + right * horizontalAxis;
-			direction.Normalize();
-			direction *= _targetSpeed;
+			_direction = forward * verticalAxis + right * horizontalAxis;
+			_direction.Normalize();
+			_direction *= _targetSpeed;
 
 			if (_isJumping)
 			{
@@ -46,39 +50,27 @@ namespace Logic.Characters.Base
 			{
 				if (_velocity.y < 0) _velocity.y = CharacteristicConstants.GRAVITY_COEFFICIENT;
 
-				_velocity.x = direction.x;
-				_velocity.z = direction.z;
-			}
-			else
-			{
-				var dampedVelocity = _velocity;
-				dampedVelocity.y = 0;
-				dampedVelocity = Vector3.ClampMagnitude(dampedVelocity, Mathf.Max(0, dampedVelocity.magnitude - CharacteristicConstants.LINEAR_DAMPING * delta / 2));
-
-				_velocity.x = dampedVelocity.x;
-				_velocity.z = dampedVelocity.z;
+				_velocity.x = _direction.x;
+				_velocity.z = _direction.z;
 			}
 
 			_velocity.y += CharacteristicConstants.GRAVITY * delta;
 
 
-			Turn(horizontalAxis, verticalAxis, direction, delta);
+			Turn(mousePosition, delta);
 
-			var angle = Vector3.Angle(_view.Transform.forward, direction);
-			Debug.Log(angle);
-
-			if (!(angle > _directionChangeThreshold)) _view.CharacterController.Move(_velocity * delta);
+			_view.CharacterController.Move(_velocity * delta);
 		}
 
-		private void Turn(float horizontalAxis, float verticalAxis, Vector3 direction, float delta)
+		private void Turn(Vector2 mousePosition, float delta)
 		{
-			if (Mathf.Abs(horizontalAxis) > 0 || Mathf.Abs(verticalAxis) > 0)
-			{
-				var lookDirection = direction.normalized;
-				lookDirection.y = 0;
+			var ray = _camera.Camera.ScreenPointToRay(mousePosition);
 
-				var rotation = Quaternion.LookRotation(lookDirection);
-				_view.Transform.rotation = Quaternion.Slerp(_view.Transform.rotation, rotation, delta * 30);
+			if (Physics.Raycast(ray, out var hit, 300, LayerMask.GetMask("ground")))
+			{
+				var hitPosition = new Vector3(hit.point.x, _view.Transform.position.y, hit.point.z);
+				var rotation = Quaternion.LookRotation(hitPosition - _view.Transform.position);
+				_view.Transform.rotation = Quaternion.Slerp(_view.Transform.rotation, rotation, delta * 8f);
 			}
 		}
 
@@ -95,13 +87,13 @@ namespace Logic.Characters.Base
 			if (_isCrouching) return;
 
 			_isRunning = isRunning;
-			_targetSpeed = !_isRunning ? _model.Characteristics.MoveSpeed : _model.Characteristics.MoveSpeed * 1.5f;
+			_targetSpeed = !_isRunning ? _model.Characteristics.MoveSpeed : _model.Characteristics.MoveSpeed * CharacteristicConstants.MOD_RUN;
 		}
 
 		public void Crouch(bool isCrouching)
 		{
 			_isCrouching = isCrouching;
-			_targetSpeed = !_isCrouching ? _model.Characteristics.MoveSpeed : _model.Characteristics.MoveSpeed / 2f;
+			_targetSpeed = !_isCrouching ? _model.Characteristics.MoveSpeed : _model.Characteristics.MoveSpeed * CharacteristicConstants.MOD_CROUCH;
 			UpdateColliderHeight();
 		}
 

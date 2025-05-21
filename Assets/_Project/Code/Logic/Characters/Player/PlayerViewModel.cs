@@ -2,6 +2,8 @@ using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.UserUnput;
 using Infrastructure.State;
 using Logic.Characters.Base;
+using Logic.Characters.Base.Animations;
+using Logic.Characters.Base.Locomotion;
 using Logic.UserCamera;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ namespace Logic.Characters.Player
 	public sealed class PlayerViewModel : BaseCharacterViewModel
 	{
 		private readonly IUserInputService _input;
+		private readonly ICharacterAnimationController _animations;
 
 
 		public PlayerViewModel(ICharacterView view, DIContainer diContainer) : base(view)
@@ -18,7 +21,8 @@ namespace Logic.Characters.Player
 			CreateModel(diContainer.Resolve<IGameStateProvider>().GameState.Player.CharacteristicsData);
 			var camera = diContainer.Resolve<CameraController>();
 			camera.SetFollowTarget(_view.Transform);
-			_locomotion = new GroundLocomotion(_view, _model, camera.transform);
+			_locomotion = new GroundLocomotion(_view, _model, camera);
+			_animations = new CharacterAnimationController(_view, _model, _locomotion);
 
 			_view.onDestroy += Destroy;
 			AttachInput();
@@ -34,7 +38,8 @@ namespace Logic.Characters.Player
 
 		public override void Tick(float delta)
 		{
-			_locomotion.Move(_input.HorizontalAxis(), _input.VerticalAxis(), delta);
+			_locomotion.Move(_input.MousePosition(), _input.HorizontalAxis(), _input.VerticalAxis(), delta);
+			_animations.Update(delta);
 		}
 
 		public override void FixedTick(float delta)

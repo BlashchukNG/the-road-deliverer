@@ -32,7 +32,7 @@ namespace Logic.UserCamera
 		{
 			HandleRotation(delta);
 			HandleZoom(delta);
-			UpdatePosition();
+			UpdatePosition(delta);
 		}
 
 		private void HandleRotation(float delta)
@@ -57,10 +57,10 @@ namespace Logic.UserCamera
 			_settings.Distance.Value = Mathf.Lerp(_settings.Distance.Value, _targetDistance, delta * _settings.ZoomSmooth.Value);
 		}
 
-		void UpdatePosition()
+		void UpdatePosition(float delta)
 		{
 			var rotation = Quaternion.Euler(0, _settings.Yaw.Value, 0);
-			transform.position = _followTarget.position + rotation * (_settings.Offset.Value.normalized * _settings.Distance.Value);
+			transform.position = Vector3.Lerp(transform.position, _followTarget.position + rotation * (_settings.Offset.Value.normalized * _settings.Distance.Value), 50f * delta);
 			transform.LookAt(_followTarget.position + Vector3.up * (_settings.Offset.Value.y * 0.1f));
 		}
 	}
