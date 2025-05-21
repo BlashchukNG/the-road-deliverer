@@ -32,6 +32,7 @@ namespace Logic.Characters.Player
 		{
 			_input.OnMouseButtonDown += MouseButtonDown;
 			_input.OnJump += _locomotion.Jump;
+			_input.OnJump += _animations.Jump;
 			_input.OnRun += _locomotion.Run;
 			_input.OnCrouch += _locomotion.Crouch;
 		}
@@ -44,6 +45,7 @@ namespace Logic.Characters.Player
 
 		public override void FixedTick(float delta)
 		{
+			_locomotion.CheckGround(delta);
 		}
 
 		private void MouseButtonDown(Vector2 position)
@@ -53,6 +55,10 @@ namespace Logic.Characters.Player
 		private void Destroy()
 		{
 			_input.OnMouseButtonDown -= MouseButtonDown;
+			_input.OnJump -= _locomotion.Jump;
+			_input.OnJump -= _animations.Jump;
+			_input.OnRun -= _locomotion.Run;
+			_input.OnCrouch -= _locomotion.Crouch;
 		}
 	}
 }

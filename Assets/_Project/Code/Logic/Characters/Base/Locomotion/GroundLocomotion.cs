@@ -1,4 +1,5 @@
 using Constants;
+using DG.Tweening;
 using Logic.UserCamera;
 using UnityEngine;
 
@@ -13,13 +14,20 @@ namespace Logic.Characters.Base.Locomotion
 		private Vector3 _velocity;
 		private Vector3 _direction;
 		private float _targetSpeed;
+		private float _inAirTime;
 		private float _standingHeight = 1.8f;
 		private float _crouchingHeight = 1.0f;
 		private bool _isCrouching;
 		private bool _isRunning;
 		private bool _isJumping;
+		private bool _isInAir;
+		private bool _isLanding;
 
 		public Vector3 RelativityDirection => _view.Transform.InverseTransformDirection(new Vector3(_direction.x, 0, _direction.z).normalized * (_isRunning ? 1 : 0.5f));
+		public float InAirTime => _inAirTime;
+		public bool IsCroaching => _isCrouching;
+		public bool IsLanding => _isLanding;
+		public bool IsInAir => _isInAir;
 
 
 		public GroundLocomotion(ICharacterView view, CharacterModel model, CameraController camera)
@@ -40,11 +48,10 @@ namespace Logic.Characters.Base.Locomotion
 			_direction.Normalize();
 			_direction *= _targetSpeed;
 
-			if (_isJumping)
-			{
-				_velocity.y = Mathf.Sqrt(_model.Characteristics.JumpHeight * CharacteristicConstants.GRAVITY_COEFFICIENT * CharacteristicConstants.GRAVITY);
-				_isJumping = false;
-			}
+			// if (_isJumping)
+			// {
+			// 	
+			// }
 
 			if (_view.CharacterController.isGrounded)
 			{
@@ -52,6 +59,15 @@ namespace Logic.Characters.Base.Locomotion
 
 				_velocity.x = _direction.x;
 				_velocity.z = _direction.z;
+
+				_isLanding = false;
+				_isInAir = false;
+				_inAirTime = 0;
+			}
+			else
+			{
+				_isInAir = true;
+				_inAirTime += delta;
 			}
 
 			_velocity.y += CharacteristicConstants.GRAVITY * delta;
@@ -77,9 +93,16 @@ namespace Logic.Characters.Base.Locomotion
 
 		public void Jump()
 		{
-			if (!_view.CharacterController.isGrounded) return;
+			if (!_view.CharacterController.isGrounded || _isJumping) return;
 
+			DOVirtual.DelayedCall(0.3f, ToJump);
 			_isJumping = true;
+		}
+
+		private void ToJump()
+		{
+			_velocity.y = Mathf.Sqrt(_model.Characteristics.JumpHeight * CharacteristicConstants.GRAVITY_COEFFICIENT * CharacteristicConstants.GRAVITY);
+			_isJumping = false;
 		}
 
 		public void Run(bool isRunning)
@@ -95,6 +118,19 @@ namespace Logic.Characters.Base.Locomotion
 			_isCrouching = isCrouching;
 			_targetSpeed = !_isCrouching ? _model.Characteristics.MoveSpeed : _model.Characteristics.MoveSpeed * CharacteristicConstants.MOD_CROUCH;
 			UpdateColliderHeight();
+		}
+
+		public void CheckGround(float delta)
+		{
+			if (_isInAir && _inAirTime >= 0.05f)
+			{
+				var ray = new Ray(_view.Transform.position, Vector3.down);
+				Debug.DrawRay(ray.origin, ray.direction * 0.1f, Color.red);
+				if (Physics.Raycast(ray, out var hit, 0.1f, LayerMask.GetMask("ground")))
+					_isLanding = true;
+				else
+					_isLanding = false;
+			}
 		}
 
 		private void UpdateColliderHeight()
