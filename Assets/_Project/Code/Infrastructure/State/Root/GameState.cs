@@ -10,6 +10,14 @@ namespace Infrastructure.State.Root
 		public string version = "1.0";
 		public CameraSettingsData cameraSettings;
 		public PlayerEntity player;
-		public object Clone() => MemberwiseClone();
+
+		public object Clone()
+		{
+			return new GameState
+			{
+				cameraSettings = this.cameraSettings.Clone() as CameraSettingsData,
+				player = this.player.Clone() as PlayerEntity
+			};
+		}
 	}
 }

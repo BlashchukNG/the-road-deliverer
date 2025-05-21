@@ -13,6 +13,7 @@ namespace Logic.Characters.Base
 		private float _targetSpeed;
 		private float _standingHeight = 1.8f;
 		private float _crouchingHeight = 1.0f;
+		private float _directionChangeThreshold = 10f;
 		private bool _isCrouching;
 		private bool _isRunning;
 		private bool _isJumping;
@@ -60,9 +61,13 @@ namespace Logic.Characters.Base
 
 			_velocity.y += CharacteristicConstants.GRAVITY * delta;
 
-			_view.CharacterController.Move(_velocity * delta);
 
 			Turn(horizontalAxis, verticalAxis, direction, delta);
+
+			var angle = Vector3.Angle(_view.Transform.forward, direction);
+			Debug.Log(angle);
+
+			if (!(angle > _directionChangeThreshold)) _view.CharacterController.Move(_velocity * delta);
 		}
 
 		private void Turn(float horizontalAxis, float verticalAxis, Vector3 direction, float delta)

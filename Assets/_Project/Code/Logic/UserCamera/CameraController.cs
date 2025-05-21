@@ -16,6 +16,7 @@ namespace Logic.UserCamera
 
 		private IUserInputService _input;
 		private CameraSettingsDataProxy _settings;
+		private float _targetDistance;
 
 
 		public CameraController SetInput(DIContainer diContainer)
@@ -49,8 +50,11 @@ namespace Logic.UserCamera
 		{
 			float scrollInput = _input.GetMouseScrollWheel() * _settings.ZoomSpeed.Value * delta;
 
-			_settings.Distance.Value -= scrollInput;
-			_settings.Distance.Value = Mathf.Clamp(_settings.Distance.Value, _settings.MinDistance.Value, _settings.MaxDistance.Value);
+			_targetDistance = _settings.Distance.Value;
+			_targetDistance -= scrollInput;
+			_targetDistance = Mathf.Clamp(_targetDistance, _settings.MinDistance.Value, _settings.MaxDistance.Value);
+
+			_settings.Distance.Value = Mathf.Lerp(_settings.Distance.Value, _targetDistance, delta * _settings.ZoomSmooth.Value);
 		}
 
 		void UpdatePosition()

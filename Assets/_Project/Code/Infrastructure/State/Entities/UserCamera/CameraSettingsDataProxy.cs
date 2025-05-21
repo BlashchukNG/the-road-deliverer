@@ -12,6 +12,7 @@ namespace Infrastructure.State.Entities.UserCamera
 		public ReactiveProperty<float> RotationSpeed { get; }
 		public ReactiveProperty<float> Yaw { get; }
 		public ReactiveProperty<float> ZoomSpeed { get; }
+		public ReactiveProperty<float> ZoomSmooth { get; }
 
 		
 		public CameraSettingsDataProxy(CameraSettingsData data)
@@ -23,6 +24,7 @@ namespace Infrastructure.State.Entities.UserCamera
 			RotationSpeed = new ReactiveProperty<float>(data.rotationSpeed);
 			Yaw = new ReactiveProperty<float>(data.yaw);
 			ZoomSpeed = new ReactiveProperty<float>(data.zoomSpeed);
+			ZoomSmooth = new ReactiveProperty<float>(data.zoomSmooth);
 			
 			Offset.Skip(1).Subscribe(value => data.offset = value);
 			Distance.Skip(1).Subscribe(value => data.distance = value);
@@ -31,6 +33,7 @@ namespace Infrastructure.State.Entities.UserCamera
 			RotationSpeed.Skip(1).Subscribe(value => data.rotationSpeed = value);
 			Yaw.Skip(1).Subscribe(value => data.yaw = value);
 			ZoomSpeed.Skip(1).Subscribe(value => data.zoomSpeed = value);
+			ZoomSmooth.Skip(1).Subscribe(value => data.zoomSmooth = value);
 		}
 	}
 }

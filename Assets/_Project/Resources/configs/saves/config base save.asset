@@ -22,6 +22,7 @@ MonoBehaviour:
       rotationSpeed: 100
       yaw: 0
       zoomSpeed: 200
+      zoomSmooth: 10
     player:
       id: 0
       typeId: player_0

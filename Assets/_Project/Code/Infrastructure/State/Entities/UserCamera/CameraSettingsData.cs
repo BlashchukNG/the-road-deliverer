@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Infrastructure.State.Entities.UserCamera
 {
 	[Serializable]
-	public sealed class CameraSettingsData
+	public sealed class CameraSettingsData : ICloneable
 	{
 		public Vector3 offset;
 		public float distance;
@@ -13,5 +13,8 @@ namespace Infrastructure.State.Entities.UserCamera
 		public float rotationSpeed;
 		public float yaw;
 		public float zoomSpeed;
+		public float zoomSmooth;
+
+		public object Clone() => MemberwiseClone();
 	}
 }
