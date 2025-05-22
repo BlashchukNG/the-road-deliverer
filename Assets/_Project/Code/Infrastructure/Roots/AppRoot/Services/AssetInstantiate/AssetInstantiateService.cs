@@ -1,7 +1,8 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
+using Infrastructure.Roots.AppRoot.Services.Updater;
+using Logic.UserCamera;
 using UnityEngine;
-using UserCamera;
 using Utils.Coroutiner;
 
 namespace Infrastructure.Roots.AppRoot.Services.AssetInstantiate
@@ -22,6 +23,14 @@ namespace Infrastructure.Roots.AppRoot.Services.AssetInstantiate
 			Object.DontDestroyOnLoad(coroutineRunner.gameObject);
 
 			return coroutineRunner;
+		}
+
+		public IUpdateService GetUpdater()
+		{
+			var updater = new GameObject("[UPDATE SERVICE]")
+				.AddComponent<UpdateService>();
+
+			return updater;
 		}
 
 		public CameraController GetCameraController() => GetInstance(_diContainer.Resolve<IResourceLoaderService>().GetPrefabCameraController());

@@ -78,7 +78,7 @@ namespace Infrastructure.Roots.AppRoot
 			_diContainer.RegisterInstance(_uiRootView);
 
 			_diContainer.RegisterInstance<ISceneLoaderService>(new SceneLoaderService(_diContainer));
-			_diContainer.RegisterInstance<IGameStateProvider>(new PlayerPrefsGameStateProvider());
+			_diContainer.RegisterInstance<IGameStateProvider>(new PlayerPrefsGameStateProvider(_diContainer));
 		}
 	}
 }

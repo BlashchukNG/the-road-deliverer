@@ -1,3 +1,5 @@
+using Infrastructure.DI;
+using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.State.Root;
 using R3;
 using UnityEngine;
@@ -12,8 +14,15 @@ namespace Infrastructure.State
 		public GameStateProxy GameState { get; private set; }
 		public GameSettingsStateProxy GameSettingsState { get; private set; }
 
+		private readonly SaveFileConfig _saveFileConfig;
+
 		private GameState _gameStateOrigin;
 		private GameSettingsState _gameSettingsStateOrigin;
+
+		public PlayerPrefsGameStateProvider(DIContainer diContainer)
+		{
+			_saveFileConfig = diContainer.Resolve<IResourceLoaderService>().GetBaseSaveFile();
+		}
 
 		public Observable<GameStateProxy> LoadGameState()
 		{
@@ -36,13 +45,7 @@ namespace Infrastructure.State
 
 		private GameStateProxy CreateGameStateFromSettings()
 		{
-			_gameStateOrigin = new()
-			{
-				player = new()
-				{
-					id = 0
-				}
-			};
+			_gameStateOrigin = _saveFileConfig.state.Clone() as GameState;
 
 			Debug.Log($"GameStateProvider: state created from settings: {JsonUtility.ToJson(_gameStateOrigin, true)}");
 

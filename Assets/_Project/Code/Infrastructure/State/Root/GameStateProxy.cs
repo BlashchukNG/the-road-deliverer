@@ -1,15 +1,21 @@
 using Infrastructure.State.Entities.Player;
+using Infrastructure.State.Entities.UserCamera;
 
 namespace Infrastructure.State.Root
 {
 	public sealed class GameStateProxy
 	{
 		//public ObservableList<PlayerEntityProxy> players { get; } = new();
+		public string Version { get; }
+		public CameraSettingsDataProxy CameraSettings { get; }
 		public PlayerEntityProxy Player { get; }
+
 
 		public GameStateProxy(GameState state)
 		{
+			Version = state.version;
 			Player = new PlayerEntityProxy(state.player);
+			CameraSettings = new CameraSettingsDataProxy(state.cameraSettings);
 
 			//state.players.ForEach(p => players.Add(new PlayerEntityProxy(p)));
 			// players.ObservableAdd().Subscribe(e =>

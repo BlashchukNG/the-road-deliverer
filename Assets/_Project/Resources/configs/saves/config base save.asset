@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f9c324bada4b13ac79d105c43ea849, type: 3}
+  m_Name: config base save
+  m_EditorClassIdentifier: 
+  state:
+    version: 1.0
+    cameraSettings:
+      offset: {x: 0, y: 20, z: -10}
+      distance: 10
+      minDistance: 5
+      maxDistance: 30
+      rotationSpeed: 100
+      yaw: 0
+      zoomSpeed: 200
+      zoomSmooth: 10
+    player:
+      id: 0
+      typeId: player_0
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+      characteristics:
+        primary:
+          strength:
+            type: 1
+            level: 5
+            progress: 0
+            modificator: 1
+          dexterity:
+            type: 2
+            level: 5
+            progress: 0
+            modificator: 1
+          stamina:
+            type: 3
+            level: 5
+            progress: 0
+            modificator: 1
+          perception:
+            type: 4
+            level: 5
+            progress: 0
+            modificator: 1
+          intelligence:
+            type: 5
+            level: 5
+            progress: 0
+            modificator: 1
+          luck:
+            type: 6
+            level: 5
+            progress: 0
+            modificator: 1
+        secondary:
+          athleticism:
+            type: 101
+            level: 10
+            progress: 0
+            modificator: 1
+          driving:
+            type: 102
+            level: 10
+            progress: 0
+            modificator: 1
