@@ -37,7 +37,7 @@ namespace Logic.UserCamera
 
 		private void HandleRotation(float delta)
 		{
-			var axis = _input.HorizontalMouseAxis() * _settings.RotationSpeed.Value;
+			var axis = _input.HorizontalMouseAxis * _settings.RotationSpeed.Value;
 			_settings.Yaw.Value += axis * delta;
 
 			if (_settings.Yaw.Value < 0)
@@ -48,7 +48,7 @@ namespace Logic.UserCamera
 
 		private void HandleZoom(float delta)
 		{
-			float scrollInput = _input.GetMouseScrollWheel() * _settings.ZoomSpeed.Value * delta;
+			float scrollInput = _input.GetMouseScrollWheel * _settings.ZoomSpeed.Value * delta;
 
 			_targetDistance = _settings.Distance.Value;
 			_targetDistance -= scrollInput;
@@ -63,5 +63,13 @@ namespace Logic.UserCamera
 			transform.position = Vector3.Lerp(transform.position, _followTarget.position + rotation * (_settings.Offset.Value.normalized * _settings.Distance.Value), 50f * delta);
 			transform.LookAt(_followTarget.position + Vector3.up * (_settings.Offset.Value.y * 0.1f));
 		}
+
+		public Vector3 GetCameraForwardZeroedYNormalised() => GetCameraForwardZeroedY().normalized;
+		public Vector3 GetCameraRightZeroedYNormalised() => new Vector3(transform.right.x, 0, transform.right.z);
+
+		public Vector3 GetCameraForward() => transform.forward;
+		public Vector3 GetCameraForwardZeroedY() => new(transform.forward.x, 0, transform.forward.z);
+		
+		public float GetCameraTiltX() => transform.eulerAngles.x;
 	}
 }

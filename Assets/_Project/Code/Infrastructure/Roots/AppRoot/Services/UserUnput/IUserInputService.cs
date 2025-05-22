@@ -6,16 +6,24 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 {
 	public interface IUserInputService : ITick
 	{
-		event Action<Vector2> OnMouseButtonDown;
-		event Action<bool> OnRun;
-		event Action<bool> OnCrouch;
-		event Action OnJump;
-
-
-		float HorizontalMouseAxis();
-		float GetMouseScrollWheel();
-		float HorizontalAxis();
-		float VerticalAxis();
-		Vector2 MousePosition();
+		event Action<Vector2> onMouseButtonLeftDown;
+		event Action<Vector2> onMouseButtonLeft;
+		event Action<Vector2> onMouseButtonLeftUp;
+		event Action<Vector2> onMouseButtonRightDown;
+		event Action<Vector2> onMouseButtonRight;
+		event Action<Vector2> onMouseButtonRightUp;
+		event Action onWalkToggled;
+		event Action onSprintActivated;
+		event Action onSprintDeactivated;
+		event Action onCrouchActivated;
+		event Action onCrouchDeactivated;
+		event Action onJumpPerformed;
+		
+		bool MovementInputDetected { get; }
+		float MovementInputDuration { set; get; }
+		Vector2 MoveComposite { get; }
+		float HorizontalMouseAxis { get; }
+		float GetMouseScrollWheel { get; }
+		Vector2 MousePosition { get; }
 	}
 }

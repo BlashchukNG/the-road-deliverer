@@ -1,6 +1,6 @@
 using Infrastructure.Roots.AppRoot.Services.Updater;
 using Infrastructure.State.Entities.Player.Characteristics.Proxy;
-using Logic.Characters.Base.Locomotion;
+using Logic.Characters.Base.Locomotions;
 
 namespace Logic.Characters.Base
 {
@@ -8,7 +8,7 @@ namespace Logic.Characters.Base
 	{
 		protected readonly ICharacterView _view;
 		
-		protected ICharacterLocomotion _locomotion;
+		protected Locomotion _locomotion;
 		protected CharacterModel _model;
 
 		protected BaseCharacterViewModel(ICharacterView view)

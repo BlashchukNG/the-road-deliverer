@@ -6,6 +6,12 @@ namespace Logic.Characters.Player
 {
 	public sealed class PlayerView : MonoBehaviour, ICharacterView
 	{
+		public AnimationCurve headLookXCurve;
+		public AnimationCurve bodyLookXCurve;
+		public AnimationCurve leanCurve;
+		public Transform frontRayPos;
+		public Transform rearRayPos;
+		
 		public Transform Transform => _characterController.transform;
 		public CharacterController CharacterController => _characterController;
 		public Animator Animator => _animator;
