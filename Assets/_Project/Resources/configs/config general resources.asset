@@ -17,3 +17,5 @@ MonoBehaviour:
     path: root/ui root view
   - name: camera controller
     path: camera/camera controller
+  - name: config locomotin settings
+    path: configs/player/config locomotin settings

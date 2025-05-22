@@ -25,7 +25,7 @@ namespace Logic.Characters.Base.Locomotions
 		public float capsuleCrouchingCentre = 0.6f;
 
 		[Header("Ground Settings")]
-		public LayerMask groundLayerMask = LayerMask.GetMask("ground");
+		public LayerMask groundLayerMask;
 		public float groundedOffset = -0.14f;
 
 		[Header("In-Air Settings")]
