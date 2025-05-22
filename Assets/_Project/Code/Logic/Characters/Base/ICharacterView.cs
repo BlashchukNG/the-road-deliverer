@@ -8,6 +8,8 @@ namespace Logic.Characters.Base
 		public Transform Transform { get; }
 		public CharacterController CharacterController { get; }
 		public Animator Animator { get; }
+		Transform FrontRayPos { get; }
+		Transform RearRayPos { get; }
 
 		public event Action onDestroy;
 	}

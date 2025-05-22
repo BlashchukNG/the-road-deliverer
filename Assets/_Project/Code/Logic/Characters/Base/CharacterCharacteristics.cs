@@ -11,7 +11,9 @@ namespace Logic.Characters.Base
 		private readonly CharacteristicsDataProxy _characteristics;
 
 		//Calculated
-		public float MoveSpeed { get; private set; }
+		public float WalkSpeed { get; private set; }
+		public float RunSpeed { get; private set; }
+		public float SprintSpeed { get; private set;}
 		public float JumpHeight { get; private set; }
 		public float MaxWeight { get; private set; }
 
@@ -22,7 +24,9 @@ namespace Logic.Characters.Base
 			_characteristics = data;
 			data.Primary.Strength.Level.Subscribe(_ => Calculate(data.Primary.Strength));
 
-			MoveSpeed = CalculateMoveSpeed();
+			WalkSpeed = CalculateWalkSpeed();
+			SprintSpeed = CalculateSprintSpeed();
+			RunSpeed = CalculateRunSpeed();
 			JumpHeight = CalculateJumpHeight();
 		}
 
@@ -61,10 +65,10 @@ namespace Logic.Characters.Base
 
 		private void CalculateDexterityDependencies()
 		{
-			CalculateMoveSpeed();
+			CalculateWalkSpeed();
 		}
 
-		private float CalculateMoveSpeed()
+		private float CalculateWalkSpeed()
 		{
 			// // Базовые параметры
 			// var dexterityCoefficient = 0.1f;    // Коэффициент ловкости (k_A)
@@ -88,7 +92,17 @@ namespace Logic.Characters.Base
 			//
 			// MoveSpeed = numerator / denominator;
 
+			return 1.4f;
+		}
+		
+		private float CalculateRunSpeed()
+		{
 			return 2.5f;
+		}
+		
+		private float CalculateSprintSpeed()
+		{
+			return 6f;
 		}
 
 		private float CalculateJumpHeight()

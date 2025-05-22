@@ -1,6 +1,8 @@
 using Infrastructure.DI;
+using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.UserUnput;
 using Infrastructure.State;
+using Infrastructure.State.Entities.Player.Characteristics.Proxy;
 using Logic.Characters.Base;
 using Logic.Characters.Base.Locomotions;
 using Logic.UserCamera;
@@ -11,42 +13,37 @@ namespace Logic.Characters.Player
 	public sealed class PlayerViewModel : BaseCharacterViewModel
 	{
 		private readonly IUserInputService _input;
+		private readonly CameraController _camera;
+		private readonly Locomotion _locomotion;
 
 
-		public PlayerViewModel(ICharacterView view, DIContainer diContainer) : base(view)
+		public PlayerViewModel(ICharacterView view, DIContainer diContainer) : base(view, diContainer)
 		{
 			_input = diContainer.Resolve<IUserInputService>();
-			CreateModel(diContainer.Resolve<IGameStateProvider>().GameState.Player.CharacteristicsData);
-			var camera = diContainer.Resolve<CameraController>();
-			camera.SetFollowTarget(_view.Transform);
-			_locomotion = new Locomotion(view as PlayerView, _input, camera);
+			_camera = diContainer.Resolve<CameraController>().SetFollowTarget(_view.Transform);
 
 			_view.onDestroy += Destroy;
-			AttachInput();
+			CreateModel();
+			
+			_locomotion = new Locomotion(_model,_input);
 		}
 
-		private void AttachInput()
+		protected override void CreateModel()
 		{
-			
+			_model = new CharacterModel(_view, _camera, _input, _diContainer.Resolve<IGameStateProvider>().GameState.Player.CharacteristicsData, _diContainer.Resolve<IResourceLoaderService>().GetLocomotionSettings());
 		}
 
 		public override void Tick(float delta)
 		{
-			_locomotion.Tick(delta);
+			_locomotion.Update(delta);
 		}
 
 		public override void FixedTick(float delta)
-		{
-			
-		}
-
-		private void MouseButtonDown(Vector2 position)
 		{
 		}
 
 		private void Destroy()
 		{
-			
 		}
 	}
 }

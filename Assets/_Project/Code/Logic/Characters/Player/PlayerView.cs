@@ -6,19 +6,17 @@ namespace Logic.Characters.Player
 {
 	public sealed class PlayerView : MonoBehaviour, ICharacterView
 	{
-		public AnimationCurve headLookXCurve;
-		public AnimationCurve bodyLookXCurve;
-		public AnimationCurve leanCurve;
-		public Transform frontRayPos;
-		public Transform rearRayPos;
-		
 		public Transform Transform => _characterController.transform;
 		public CharacterController CharacterController => _characterController;
 		public Animator Animator => _animator;
+		public Transform FrontRayPos => _frontRayPos;
+		public Transform RearRayPos => _rearRayPos;
 		public event Action onDestroy;
 
-		[SerializeField] public CharacterController _characterController;
-		[SerializeField] public Animator _animator;
+		[SerializeField] private CharacterController _characterController;
+		[SerializeField] private Animator _animator;
+		[SerializeField] private Transform _frontRayPos;
+		[SerializeField] private Transform _rearRayPos;
 
 		private void OnDestroy() => onDestroy?.Invoke();
 	}

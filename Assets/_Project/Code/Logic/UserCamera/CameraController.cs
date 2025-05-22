@@ -26,7 +26,11 @@ namespace Logic.UserCamera
 			return this;
 		}
 
-		public void SetFollowTarget(Transform target) => _followTarget = target;
+		public CameraController SetFollowTarget(Transform target)
+		{
+			_followTarget = target;
+			return this;
+		}
 
 		public void LateTick(float delta)
 		{
