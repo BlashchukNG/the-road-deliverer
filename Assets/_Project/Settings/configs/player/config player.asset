@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a6becedd7a54f33a51de1be2668b4c6, type: 3}
-  m_Name: config general resources
+  m_Script: {fileID: 11500000, guid: 0876805887b14059ad520a7ea523c254, type: 3}
+  m_Name: config player
   m_EditorClassIdentifier: 
-  resources:
-  - name: ui root view
-    path: root/ui root view
-  - name: config player locomotion settings
-    path: configs/player/config player locomotion settings
+  prefabPlayer: 
+  locomotionSettings: {fileID: 0}

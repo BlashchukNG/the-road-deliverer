@@ -10,7 +10,7 @@ namespace Logic.Characters.Player
 		public PlayerEntityProxy Entity { get; }
 		public CharacterCharacteristics Characteristics { get; }
 		public References References { get; private set; }
-		public Settings Settings { get; }
+		public Locomotions.Settings Settings { get; }
 		public RuntimeData RuntimeData { get; }
 		public AnimationsVariables AnimationsVariables { get; }
 		
@@ -18,12 +18,12 @@ namespace Logic.Characters.Player
 		private readonly IUserInputService _input;
 		
 
-		public PlayerBehavior(IUserInputService input, PlayerEntityProxy entity, Settings settings)
+		public PlayerBehavior(IUserInputService input, PlayerEntityProxy entity, Locomotions.Settings settings)
 		{
 			_input = input;
 			Entity = entity;
 			Characteristics = new CharacterCharacteristics(entity.CharacteristicsData);
-			Settings = settings.Clone() as Settings;
+			Settings = settings.Clone() as Locomotions.Settings;
 			RuntimeData = new();
 			AnimationsVariables = new();
 		}

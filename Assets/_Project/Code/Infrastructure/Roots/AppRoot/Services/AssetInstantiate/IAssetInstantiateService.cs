@@ -1,5 +1,4 @@
 using Infrastructure.Roots.AppRoot.Services.Updater;
-using Logic.UserCamera;
 using UnityEngine;
 using Utils.Coroutiner;
 
@@ -9,7 +8,8 @@ namespace Infrastructure.Roots.AppRoot.Services.AssetInstantiate
 	{
 		CoroutineRunner GetCoroutineRunner();
 		IUpdateService GetUpdater();
-		CameraController GetCameraController();
-		T GetInstance<T>(T prefab, Transform root = null, Vector3 position = default, Quaternion rotation = default, bool bisDontDestroyOnLoad = false) where T : MonoBehaviour;
+
+		T GetInstance<T>(T prefab, Transform root = null, Vector3 position = default, Quaternion rotation = default, bool bisDontDestroyOnLoad = false)
+			where T : MonoBehaviour;
 	}
 }
