@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Logic.Characters.Player
 {
-	public sealed class PlayerView : MonoBehaviour, ICharacterView
+	public sealed class PlayerBinder : MonoBehaviour
 	{
 		public Transform Transform => _characterController.transform;
 		public CharacterController CharacterController => _characterController;

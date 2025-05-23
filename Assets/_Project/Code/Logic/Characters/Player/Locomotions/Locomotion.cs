@@ -1,4 +1,4 @@
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 using Logic.Characters.Base.Locomotions.States;
 
 namespace Logic.Characters.Base.Locomotions

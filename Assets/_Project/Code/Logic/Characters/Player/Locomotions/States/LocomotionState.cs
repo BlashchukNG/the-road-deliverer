@@ -1,4 +1,4 @@
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 
 namespace Logic.Characters.Base.Locomotions.States
 {
@@ -6,7 +6,7 @@ namespace Logic.Characters.Base.Locomotions.States
 	{
 		private readonly StateMachine _stateMachine;
 		private readonly IUserInputService _input;
-		private readonly CharacterModel _model;
+		private readonly PlayerBehavior _model;
 		private readonly Checker _checker;
 		private readonly Calculator _calculator;
 		private readonly InputCalculator _inputCalculator;
@@ -14,7 +14,7 @@ namespace Logic.Characters.Base.Locomotions.States
 
 		public LocomotionState
 		(StateMachine stateMachine,
-			CharacterModel model,
+			PlayerBehavior model,
 			IUserInputService input,
 			Checker checker, Calculator calculator,
 			InputCalculator inputCalculator, 
@@ -44,13 +44,13 @@ namespace Logic.Characters.Base.Locomotions.States
 		{
 			_checker.GroundCheck();
 
-			if (!_model.LocomotionRuntimeData.isGrounded) _stateMachine.SwitchState(AnimationState.Fall);
-			if (_model.LocomotionRuntimeData.isCrouching) _stateMachine.SwitchState(AnimationState.Crouch);
+			if (!_model.RuntimeData.isGrounded) _stateMachine.SwitchState(AnimationState.Fall);
+			if (_model.RuntimeData.isCrouching) _stateMachine.SwitchState(AnimationState.Crouch);
 
 			_checker.CheckEnableTurns();
 			_checker.CheckEnableLean();
-			_calculator.CalculateRotationalAdditives(delta, _model.LocomotionSettings.enableLean, _model.LocomotionSettings.enableHeadTurn,
-				_model.LocomotionSettings.enableBodyTurn);
+			_calculator.CalculateRotationalAdditives(delta, _model.Settings.enableLean, _model.Settings.enableHeadTurn,
+				_model.Settings.enableBodyTurn);
 
 			_inputCalculator.Calculate(delta);
 			_calculator.CalculateMoveDirection();
@@ -59,7 +59,7 @@ namespace Logic.Characters.Base.Locomotions.States
 			_checker.CheckIfStopped();
 			
 			_calculator.CalculateFaceMoveDirection(delta);
-			_model.LocomotionReferences.Controller.Move(_model.LocomotionRuntimeData.velocity * delta);
+			_model.References.Controller.Move(_model.RuntimeData.velocity * delta);
 			_animatorVariablesUpdater.UpdateAnimatorController();
 		}
 

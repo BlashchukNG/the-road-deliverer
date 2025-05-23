@@ -2,9 +2,9 @@ namespace Logic.Characters.Base.Locomotions.States
 {
 	public sealed class BaseState : IState
 	{
-		private readonly CharacterModel _model;
+		private readonly PlayerBehavior _model;
 
-		public BaseState(CharacterModel model)
+		public BaseState(PlayerBehavior model)
 		{
 			_model = model;
 		}
@@ -16,7 +16,7 @@ namespace Logic.Characters.Base.Locomotions.States
 
 		public IState Enter()
 		{
-			_model.LocomotionRuntimeData.previousRotation = _model.LocomotionReferences.Controller.transform.forward;
+			_model.RuntimeData.previousRotation = _model.References.Controller.transform.forward;
 			return this;
 		}
 

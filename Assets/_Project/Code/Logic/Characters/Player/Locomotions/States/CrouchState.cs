@@ -1,4 +1,4 @@
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 using UnityEngine;
 
 namespace Logic.Characters.Base.Locomotions.States
@@ -7,7 +7,7 @@ namespace Logic.Characters.Base.Locomotions.States
 	{
 		private readonly StateMachine _stateMachine;
 		private readonly IUserInputService _input;
-		private readonly CharacterModel _model;
+		private readonly PlayerBehavior _model;
 		private readonly Checker _checker;
 		private readonly Calculator _calculator;
 		private readonly InputCalculator _inputCalculator;
@@ -15,7 +15,7 @@ namespace Logic.Characters.Base.Locomotions.States
 
 		public CrouchState
 		(StateMachine stateMachine,
-			CharacterModel model,
+			PlayerBehavior model,
 			IUserInputService input,
 			Checker checker, Calculator calculator,
 			InputCalculator inputCalculator,
@@ -45,7 +45,7 @@ namespace Logic.Characters.Base.Locomotions.States
 		{
 			_checker.GroundCheck();
 
-			if (!_model.LocomotionRuntimeData.isGrounded)
+			if (!_model.RuntimeData.isGrounded)
 			{
 				_inputCalculator.DeactivateCrouch();
 				_inputCalculator.CapsuleCrouchingSize(false);
@@ -54,13 +54,13 @@ namespace Logic.Characters.Base.Locomotions.States
 
 			CeilingHeightCheck();
 
-			if (!_model.LocomotionRuntimeData.crouchKeyPressed && !_model.LocomotionRuntimeData.cannotStandUp)
+			if (!_model.RuntimeData.crouchKeyPressed && !_model.RuntimeData.cannotStandUp)
 			{
 				_inputCalculator.DeactivateCrouch();
 				SwitchToLocomotionState();
 			}
 
-			if (!_model.LocomotionRuntimeData.isCrouching)
+			if (!_model.RuntimeData.isCrouching)
 			{
 				_inputCalculator.CapsuleCrouchingSize(false);
 				SwitchToLocomotionState();
@@ -69,7 +69,7 @@ namespace Logic.Characters.Base.Locomotions.States
 			_checker.CheckEnableTurns();
 			_checker.CheckEnableLean();
 
-			_calculator.CalculateRotationalAdditives(delta, false, _model.LocomotionSettings.enableHeadTurn, false);
+			_calculator.CalculateRotationalAdditives(delta, false, _model.Settings.enableHeadTurn, false);
 
 			_inputCalculator.Calculate(delta);
 			_calculator.CalculateMoveDirection();
@@ -78,28 +78,28 @@ namespace Logic.Characters.Base.Locomotions.States
 			_checker.CheckIfStopped();
 
 			_calculator.CalculateFaceMoveDirection(delta);
-			_model.LocomotionReferences.Controller.Move(_model.LocomotionRuntimeData.velocity * delta);
+			_model.References.Controller.Move(_model.RuntimeData.velocity * delta);
 			_animatorVariablesUpdater.UpdateAnimatorController();
 		}
 
 		private void CeilingHeightCheck()
 		{
 			float rayDistance = Mathf.Infinity;
-			float minimumStandingHeight = _model.LocomotionSettings.capsuleStandingHeight - _model.LocomotionReferences.FrontRayPos.localPosition.y;
+			float minimumStandingHeight = _model.Settings.capsuleStandingHeight - _model.References.FrontRayPos.localPosition.y;
 
-			Vector3 midpoint = new Vector3(_model.LocomotionReferences.Controller.transform.position.x,
-				_model.LocomotionReferences.Controller.transform.position.y + _model.LocomotionReferences.FrontRayPos.localPosition.y,
-				_model.LocomotionReferences.Controller.transform.position.z);
-			if (Physics.Raycast(midpoint, _model.LocomotionReferences.Controller.transform.TransformDirection(Vector3.up),
-				    out RaycastHit ceilingHit, rayDistance, _model.LocomotionSettings.groundLayerMask))
-				_model.LocomotionRuntimeData.cannotStandUp = ceilingHit.distance < minimumStandingHeight;
+			Vector3 midpoint = new Vector3(_model.References.Controller.transform.position.x,
+				_model.References.Controller.transform.position.y + _model.References.FrontRayPos.localPosition.y,
+				_model.References.Controller.transform.position.z);
+			if (Physics.Raycast(midpoint, _model.References.Controller.transform.TransformDirection(Vector3.up),
+				    out RaycastHit ceilingHit, rayDistance, _model.Settings.groundLayerMask))
+				_model.RuntimeData.cannotStandUp = ceilingHit.distance < minimumStandingHeight;
 			else
-				_model.LocomotionRuntimeData.cannotStandUp = false;
+				_model.RuntimeData.cannotStandUp = false;
 		}
 
 		private void SwitchStateToJump()
 		{
-			if (!_model.LocomotionRuntimeData.cannotStandUp)
+			if (!_model.RuntimeData.cannotStandUp)
 			{
 				_inputCalculator.DeactivateCrouch();
 				_stateMachine.SwitchState(AnimationState.Jump);

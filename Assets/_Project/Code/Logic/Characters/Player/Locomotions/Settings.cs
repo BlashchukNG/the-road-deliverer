@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Logic.Characters.Base.Locomotions
 {
 	[Serializable]
-	public sealed class LocomotionSettings : ICloneable
+	public sealed class Settings : ICloneable
 	{
 		public readonly float ANIMATION_DAMP_TIME = 5f;
 		public readonly float STRAFE_DIRECTION_DAMP_TIME = 20f;

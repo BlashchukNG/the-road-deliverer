@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Logic.Characters.Base.Locomotions
 {
-	public sealed class LocomotionAnimationsVariables
+	public sealed class AnimationsVariables
 	{
 		public readonly int movementInputTappedHash = Animator.StringToHash("MovementInputTapped");
 		public readonly int movementInputPressedHash = Animator.StringToHash("MovementInputPressed");

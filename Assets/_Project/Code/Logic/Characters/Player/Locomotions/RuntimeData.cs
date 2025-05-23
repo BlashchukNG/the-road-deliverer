@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Logic.Characters.Base.Locomotions
 {
-	public sealed class LocomotionRuntimeData
+	public sealed class RuntimeData
 	{
 		public float inclineAngle;
 		

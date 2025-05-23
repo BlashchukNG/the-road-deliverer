@@ -1,13 +1,13 @@
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 using Logic.Characters.Player;
 using Logic.UserCamera;
 using UnityEngine;
 
 namespace Logic.Characters.Base.Locomotions
 {
-	public sealed class LocomotionReferences
+	public sealed class References
 	{
-		public ICharacterView View { get; }
+		public PlayerBinder View { get; }
 		public IUserInputService Input { get; }
 		public CameraController Camera { get; }
 		public CharacterController Controller { get; }
@@ -15,7 +15,7 @@ namespace Logic.Characters.Base.Locomotions
 		public Transform FrontRayPos { get; }
 		public Transform RearRayPos { get; }
 
-		public LocomotionReferences(ICharacterView view, CameraController camera, IUserInputService input)
+		public References(PlayerBinder view, CameraController camera, IUserInputService input)
 		{
 			View = view;
 			Input = input;

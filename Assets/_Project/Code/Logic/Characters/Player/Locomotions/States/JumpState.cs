@@ -1,4 +1,4 @@
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 using UnityEngine;
 
 namespace Logic.Characters.Base.Locomotions.States
@@ -7,7 +7,7 @@ namespace Logic.Characters.Base.Locomotions.States
 	{
 		private readonly StateMachine _stateMachine;
 		private readonly IUserInputService _input;
-		private readonly CharacterModel _model;
+		private readonly PlayerBehavior _model;
 		private readonly Checker _checker;
 		private readonly Calculator _calculator;
 		private readonly InputCalculator _inputCalculator;
@@ -15,7 +15,7 @@ namespace Logic.Characters.Base.Locomotions.States
 
 		public JumpState
 		(StateMachine stateMachine,
-			CharacterModel model,
+			PlayerBehavior model,
 			Checker checker, Calculator calculator,
 			InputCalculator inputCalculator,
 			AnimatorVariablesUpdater animatorVariablesUpdater)
@@ -30,15 +30,15 @@ namespace Logic.Characters.Base.Locomotions.States
 
 		public void Exit()
 		{
-			_model.LocomotionReferences.Animator.SetBool(_model.LocomotionAnimationsVariables.isJumpingAnimHash, false);
+			_model.References.Animator.SetBool(_model.AnimationsVariables.isJumpingAnimHash, false);
 		}
 
 		public IState Enter()
 		{
-			_model.LocomotionReferences.Animator.SetBool(_model.LocomotionAnimationsVariables.isJumpingAnimHash, true);
-			_model.LocomotionRuntimeData.isSliding = false;
-			_model.LocomotionRuntimeData.velocity = new Vector3(_model.LocomotionRuntimeData.velocity.x,
-				_model.LocomotionSettings.jumpForce, _model.LocomotionRuntimeData.velocity.z);
+			_model.References.Animator.SetBool(_model.AnimationsVariables.isJumpingAnimHash, true);
+			_model.RuntimeData.isSliding = false;
+			_model.RuntimeData.velocity = new Vector3(_model.RuntimeData.velocity.x,
+				_model.Settings.jumpForce, _model.RuntimeData.velocity.z);
 
 			return this;
 		}
@@ -47,26 +47,26 @@ namespace Logic.Characters.Base.Locomotions.States
 		{
 			ApplyGravity();
 
-			if (_model.LocomotionRuntimeData.velocity.y <= 0f)
+			if (_model.RuntimeData.velocity.y <= 0f)
 			{
-				_model.LocomotionReferences.Animator.SetBool(_model.LocomotionAnimationsVariables.isJumpingAnimHash, false);
+				_model.References.Animator.SetBool(_model.AnimationsVariables.isJumpingAnimHash, false);
 				_stateMachine.SwitchState(AnimationState.Fall);
 			}
 
 			_checker.GroundCheck();
 
-			_calculator.CalculateRotationalAdditives(delta, false, _model.LocomotionSettings.enableHeadTurn,
-				_model.LocomotionSettings.enableBodyTurn);
+			_calculator.CalculateRotationalAdditives(delta, false, _model.Settings.enableHeadTurn,
+				_model.Settings.enableBodyTurn);
 			_calculator.CalculateMoveDirection();
 			_calculator.CalculateFaceMoveDirection(delta);
-			_model.LocomotionReferences.Controller.Move(_model.LocomotionRuntimeData.velocity * delta);
+			_model.References.Controller.Move(_model.RuntimeData.velocity * delta);
 			_animatorVariablesUpdater.UpdateAnimatorController();
 		}
 
 		private void ApplyGravity()
 		{
-			if (_model.LocomotionRuntimeData.velocity.y > Physics.gravity.y)
-				_model.LocomotionRuntimeData.velocity.y += Physics.gravity.y * _model.LocomotionSettings.gravityMultiplier * Time.deltaTime;
+			if (_model.RuntimeData.velocity.y > Physics.gravity.y)
+				_model.RuntimeData.velocity.y += Physics.gravity.y * _model.Settings.gravityMultiplier * Time.deltaTime;
 		}
 	}
 }

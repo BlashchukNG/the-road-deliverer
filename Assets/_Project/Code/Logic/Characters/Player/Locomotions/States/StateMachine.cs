@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 
 namespace Logic.Characters.Base.Locomotions.States
 {
 	public sealed class StateMachine
 	{
-		private readonly CharacterModel _model;
+		private readonly PlayerBehavior _model;
 		private readonly InputCalculator _inputCalculator;
 		private readonly Calculator _calculator;
 		private readonly Checker _checker;
@@ -14,7 +14,7 @@ namespace Logic.Characters.Base.Locomotions.States
 		private Dictionary<AnimationState, IState> _states = new();
 		private IState _currentState;
 
-		public StateMachine(CharacterModel model, IUserInputService input)
+		public StateMachine(PlayerBehavior model, IUserInputService input)
 		{
 			_model = model;
 			_checker = new Checker(_model);

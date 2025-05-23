@@ -6,6 +6,11 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 {
 	public class PCUserInputService : IUserInputService, ITick
 	{
+		public PCUserInputService(IUpdateService updateService)
+		{
+			updateService.Add(this);
+		}
+
 		public event Action<Vector2> onMouseButtonLeftDown = v => { };
 		public event Action<Vector2> onMouseButtonLeft = v => { };
 		public event Action<Vector2> onMouseButtonLeftUp = v => { };
