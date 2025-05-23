@@ -12,6 +12,8 @@ namespace Infrastructure.State.Root
 		public CameraSettingsData cameraSettings;
 		public PlayerEntity player;
 
+		public int GetEntityId() => ++globalEntityId;
+		
 		public object Clone()
 		{
 			return new GameState

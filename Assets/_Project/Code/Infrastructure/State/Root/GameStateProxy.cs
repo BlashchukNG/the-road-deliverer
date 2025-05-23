@@ -39,6 +39,6 @@ namespace Infrastructure.State.Root
 			// });
 		}
 
-		public int GetEntityId() => ++_state.globalEntityId;
+		public int GetEntityId() => _state.GetEntityId();
 	}
 }
