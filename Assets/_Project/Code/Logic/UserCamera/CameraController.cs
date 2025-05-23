@@ -31,7 +31,7 @@ namespace Logic.UserCamera
 			_followTarget = target;
 			return this;
 		}
-
+		
 		public void LateTick(float delta)
 		{
 			HandleRotation(delta);

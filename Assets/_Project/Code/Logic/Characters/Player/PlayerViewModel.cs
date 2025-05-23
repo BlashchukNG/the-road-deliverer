@@ -2,11 +2,9 @@ using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.UserUnput;
 using Infrastructure.State;
-using Infrastructure.State.Entities.Player.Characteristics.Proxy;
 using Logic.Characters.Base;
 using Logic.Characters.Base.Locomotions;
 using Logic.UserCamera;
-using UnityEngine;
 
 namespace Logic.Characters.Player
 {
@@ -24,13 +22,14 @@ namespace Logic.Characters.Player
 
 			_view.onDestroy += Destroy;
 			CreateModel();
-			
-			_locomotion = new Locomotion(_model,_input);
+
+			_locomotion = new Locomotion(_model, _input);
 		}
 
 		protected override void CreateModel()
 		{
-			_model = new CharacterModel(_view, _camera, _input, _diContainer.Resolve<IGameStateProvider>().GameState.Player.CharacteristicsData, _diContainer.Resolve<IResourceLoaderService>().GetLocomotionSettings());
+			_model = new CharacterModel(_view, _camera, _input, _diContainer.Resolve<IGameStateProvider>().GameState.Player,
+				_diContainer.Resolve<IResourceLoaderService>().GetPlayerLocomotionSettings());
 		}
 
 		public override void Tick(float delta)

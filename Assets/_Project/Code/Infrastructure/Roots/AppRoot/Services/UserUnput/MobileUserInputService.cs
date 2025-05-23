@@ -17,6 +17,7 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 		public event Action<Vector2> onMouseButtonRightDown;
 		public event Action<Vector2> onMouseButtonRight;
 		public event Action<Vector2> onMouseButtonRightUp;
+		public event Action onSaveGame;
 		public event Action onWalkToggled;
 		public event Action onSprintActivated;
 		public event Action onSprintDeactivated;

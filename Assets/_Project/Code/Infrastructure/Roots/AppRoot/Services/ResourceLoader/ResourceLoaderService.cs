@@ -26,8 +26,11 @@ namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 		public UIRootView GetPrefabUIRootView() => Load<UIRootView>(ResourcesConstants.UI_ROOT_VIEW);
 		public CameraController GetPrefabCameraController() => Load<CameraController>(ResourcesConstants.CAMERA_CONTROLLER);
 		public SaveFileConfig GetBaseSaveFile() => Resources.Load<SaveFileConfig>(ResourcesConstants.CONFIG_BASE_SAVE_FILE);
-		public LocomotionSettings GetLocomotionSettings() => 
-			Resources.Load<LocomotionSettingsConfig>(_resources["config locomotin settings"]).settings;
+		public LocomotionSettings GetPlayerLocomotionSettings() => Resources.Load<LocomotionSettingsConfig>(_resources["config player locomotion settings"]).settings;
+
+		public T GetPrefab<T>(string name)
+			where T : MonoBehaviour =>
+			Load<T>(name);
 
 		private T Load<T>(string name)
 			where T : MonoBehaviour =>

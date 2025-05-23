@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 1438364941545617106}
   - component: {fileID: 299906346981666788}
   m_Layer: 0
-  m_Name: '[WORLD]'
+  m_Name: '[WORLD GARAGE]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

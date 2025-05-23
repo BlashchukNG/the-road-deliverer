@@ -106,7 +106,9 @@ namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 						               break;
 				               }
 			               });
-
+			
+			yield return _delayBeforeLoadScene;
+			
 			_uiRootView.HideLoadingScreen();
 		}
 
@@ -151,6 +153,8 @@ namespace Infrastructure.Roots.AppRoot.Services.SceneLoader
 				               }
 			               });
 
+			yield return _delayBeforeLoadScene;
+			
 			_uiRootView.HideLoadingScreen();
 		}
 

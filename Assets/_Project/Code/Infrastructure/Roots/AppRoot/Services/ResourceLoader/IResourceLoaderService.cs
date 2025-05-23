@@ -1,6 +1,7 @@
 using Infrastructure.State;
 using Logic.Characters.Base.Locomotions;
 using Logic.UserCamera;
+using UnityEngine;
 
 namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 {
@@ -9,6 +10,8 @@ namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 		UIRootView GetPrefabUIRootView();
 		CameraController GetPrefabCameraController();
 		SaveFileConfig GetBaseSaveFile();
-		LocomotionSettings GetLocomotionSettings();
+		LocomotionSettings GetPlayerLocomotionSettings();
+		T GetPrefab<T>(string name)
+			where T : MonoBehaviour;
 	}
 }

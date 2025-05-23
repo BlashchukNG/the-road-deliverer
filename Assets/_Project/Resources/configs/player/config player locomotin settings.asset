@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6e8072d1e794813b74c6d9040096e9b, type: 3}
-  m_Name: config locomotin settings
+  m_Name: config player locomotin settings
   m_EditorClassIdentifier: 
   settings:
     alwaysStrafe: 1

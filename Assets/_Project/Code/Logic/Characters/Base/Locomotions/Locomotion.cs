@@ -11,13 +11,14 @@ namespace Logic.Characters.Base.Locomotions
 		public Locomotion(CharacterModel model, IUserInputService input)
 		{
 			_model = model;
-			_stateMachine = new StateMachine(_model, input)
-				.SwitchState(AnimationState.Locomotion);
+			_stateMachine = new StateMachine(_model, input).SwitchState(AnimationState.Locomotion);
 		}
 
 		public void Update(float delta)
 		{
 			_stateMachine.Update(delta);
+			_model.Entity.Position.Value = _model.LocomotionReferences.Controller.transform.position;
+			_model.Entity.Rotation.Value = _model.LocomotionReferences.Controller.transform.rotation.eulerAngles;
 		}
 	}
 }

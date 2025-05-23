@@ -8,6 +8,7 @@ namespace Infrastructure.State.Root
 	public sealed class GameState : ICloneable
 	{
 		public string version = "1.0";
+		public int globalEntityId;
 		public CameraSettingsData cameraSettings;
 		public PlayerEntity player;
 
