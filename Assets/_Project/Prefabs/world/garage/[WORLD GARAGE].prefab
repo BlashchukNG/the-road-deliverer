@@ -288,7 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63d770796024901b565c9d9b66c469c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPlayer: {fileID: 5681618677836866680}
+  _camera: {fileID: 0}
+  _layerPlayer: {fileID: 5681618677836866680}
+  _prefabPlayer: {fileID: 2219656790561801695, guid: a9830db77c6620c499852d8b0f683e4a, type: 3}
 --- !u!1 &4229449169762649721
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5681618677836866680}
   m_Layer: 0
-  m_Name: PLAYER
+  m_Name: LAYER PLAYER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -814,7 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1919848811610338797}
   m_Layer: 0
-  m_Name: GROUND
+  m_Name: LAYER GROUND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

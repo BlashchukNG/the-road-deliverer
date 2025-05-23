@@ -1,5 +1,5 @@
 using System;
-using Logic.Characters.Base;
+using Logic.UserCamera;
 using UnityEngine;
 
 namespace Logic.Characters.Player
@@ -11,7 +11,9 @@ namespace Logic.Characters.Player
 		public Animator Animator => _animator;
 		public Transform FrontRayPos => _frontRayPos;
 		public Transform RearRayPos => _rearRayPos;
+		
 		public event Action onDestroy;
+		
 
 		[SerializeField] private CharacterController _characterController;
 		[SerializeField] private Animator _animator;
@@ -19,5 +21,10 @@ namespace Logic.Characters.Player
 		[SerializeField] private Transform _rearRayPos;
 
 		private void OnDestroy() => onDestroy?.Invoke();
+
+		public void Bind(PlayerViewModel viewModel, CameraController camera)
+		{
+			viewModel.AttachReferences(this, camera);
+		}
 	}
 }

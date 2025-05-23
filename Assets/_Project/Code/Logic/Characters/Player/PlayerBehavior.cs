@@ -1,10 +1,9 @@
 using Infrastructure.Roots.AppRoot.Services.UserInput;
 using Infrastructure.State.Entities.Player;
-using Logic.Characters.Base.Locomotions;
-using Logic.Characters.Player;
+using Logic.Characters.Player.Locomotions;
 using Logic.UserCamera;
 
-namespace Logic.Characters.Base
+namespace Logic.Characters.Player
 {
 	public sealed class PlayerBehavior
 	{
@@ -29,7 +28,7 @@ namespace Logic.Characters.Base
 			AnimationsVariables = new();
 		}
 
-		public void AttachPlayerBinder(CameraController camera, PlayerBinder playerBinder)
+		public void AttachReferences(PlayerBinder playerBinder, CameraController camera)
 		{
 			References = new References(playerBinder, camera, _input);
 		}

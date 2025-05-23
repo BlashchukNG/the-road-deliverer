@@ -3,7 +3,7 @@ using Infrastructure.State.Entities.Player.Characteristics.Data;
 using Infrastructure.State.Entities.Player.Characteristics.Proxy;
 using R3;
 
-namespace Logic.Characters.Base
+namespace Logic.Characters.Player
 {
 	[Serializable]
 	public sealed class CharacterCharacteristics

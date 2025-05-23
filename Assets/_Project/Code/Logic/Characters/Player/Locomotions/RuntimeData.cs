@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Logic.Characters.Base.Locomotions
+namespace Logic.Characters.Player.Locomotions
 {
 	public sealed class RuntimeData
 	{

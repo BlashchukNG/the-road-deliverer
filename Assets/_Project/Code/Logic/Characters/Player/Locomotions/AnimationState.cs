@@ -1,4 +1,4 @@
-namespace Logic.Characters.Base.Locomotions
+namespace Logic.Characters.Player.Locomotions
 {
 	public enum AnimationState
 	{

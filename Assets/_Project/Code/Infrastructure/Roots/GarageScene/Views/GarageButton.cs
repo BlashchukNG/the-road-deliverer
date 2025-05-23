@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Infrastructure.Roots.GarageScene.View
+namespace Infrastructure.Roots.GarageScene.Views
 {
 	public sealed class GarageButton : MonoBehaviour
 	{

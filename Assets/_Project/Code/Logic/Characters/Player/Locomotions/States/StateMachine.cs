@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Infrastructure.Roots.AppRoot.Services.UserInput;
 
-namespace Logic.Characters.Base.Locomotions.States
+namespace Logic.Characters.Player.Locomotions.States
 {
 	public sealed class StateMachine
 	{

@@ -1,5 +1,5 @@
 using Infrastructure.State;
-using Logic.Characters.Base.Locomotions;
+using Logic.Characters.Player.Locomotions;
 using Logic.UserCamera;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 		UIRootView GetPrefabUIRootView();
 		CameraController GetPrefabCameraController();
 		SaveFileConfig GetBaseSaveFile();
-		LocomotionSettings GetPlayerLocomotionSettings();
+		Settings GetPlayerLocomotionSettings();
 		T GetPrefab<T>(string name)
 			where T : MonoBehaviour;
 	}

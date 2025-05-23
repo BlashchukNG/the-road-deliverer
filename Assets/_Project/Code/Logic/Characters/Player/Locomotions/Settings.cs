@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Logic.Characters.Base.Locomotions
+namespace Logic.Characters.Player.Locomotions
 {
 	[Serializable]
 	public sealed class Settings : ICloneable

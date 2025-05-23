@@ -1,7 +1,7 @@
 using Infrastructure.Roots.AppRoot.Services.UserInput;
 using UnityEngine;
 
-namespace Logic.Characters.Base.Locomotions.States
+namespace Logic.Characters.Player.Locomotions.States
 {
 	public sealed class JumpState : IState
 	{

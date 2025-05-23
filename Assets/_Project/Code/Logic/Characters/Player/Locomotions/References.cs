@@ -1,9 +1,8 @@
 using Infrastructure.Roots.AppRoot.Services.UserInput;
-using Logic.Characters.Player;
 using Logic.UserCamera;
 using UnityEngine;
 
-namespace Logic.Characters.Base.Locomotions
+namespace Logic.Characters.Player.Locomotions
 {
 	public sealed class References
 	{

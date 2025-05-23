@@ -1,4 +1,4 @@
-namespace Infrastructure.Roots.GarageScene.View
+namespace Infrastructure.Roots.GarageScene.ViewModels
 {
 	public sealed class UIGarageViewModel
 	{

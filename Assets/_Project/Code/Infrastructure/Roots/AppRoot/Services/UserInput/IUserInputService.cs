@@ -2,7 +2,7 @@
 using Infrastructure.Roots.AppRoot.Services.Updater;
 using UnityEngine;
 
-namespace Infrastructure.Roots.AppRoot.Services.UserUnput
+namespace Infrastructure.Roots.AppRoot.Services.UserInput
 {
 	public interface IUserInputService : ITick
 	{

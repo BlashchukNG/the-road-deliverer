@@ -2,7 +2,7 @@ using Extensions;
 using R3;
 using UnityEngine;
 
-namespace Infrastructure.Roots.GarageScene.View
+namespace Infrastructure.Roots.GarageScene.Views
 {
 	public sealed class UIGarageRootBinder : MonoBehaviour
 	{
