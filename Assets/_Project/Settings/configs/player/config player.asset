@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0876805887b14059ad520a7ea523c254, type: 3}
   m_Name: config player
   m_EditorClassIdentifier: 
-  prefabPlayer: 
-  locomotionSettings: {fileID: 0}
+  prefabPlayer: prefabs/characters/player/player
+  locomotionSettings: {fileID: 11400000, guid: 07947373e1204fe4b90a7d3d0abdab4a, type: 2}
