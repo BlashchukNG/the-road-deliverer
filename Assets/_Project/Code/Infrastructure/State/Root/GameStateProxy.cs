@@ -5,6 +5,8 @@ namespace Infrastructure.State.Root
 {
 	public sealed class GameStateProxy
 	{
+		private readonly GameState _state;
+
 		//public ObservableList<PlayerEntityProxy> players { get; } = new();
 		public string Version { get; }
 		public CameraSettingsDataProxy CameraSettings { get; }
@@ -13,6 +15,7 @@ namespace Infrastructure.State.Root
 
 		public GameStateProxy(GameState state)
 		{
+			_state = state;
 			Version = state.version;
 			Player = new PlayerEntityProxy(state.player);
 			CameraSettings = new CameraSettingsDataProxy(state.cameraSettings);
@@ -35,5 +38,7 @@ namespace Infrastructure.State.Root
 			// 	state.players.Remove(removeEntity);
 			// });
 		}
+
+		public int GetEntityId() => ++_state.globalEntityId;
 	}
 }

@@ -12,6 +12,7 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 		public event Action<Vector2> onMouseButtonRightDown = v => { };
 		public event Action<Vector2> onMouseButtonRight = v => { };
 		public event Action<Vector2> onMouseButtonRightUp = v => { };
+		public event Action onSaveGame = () => { };
 		public event Action onWalkToggled = () => { };
 		public event Action onSprintActivated = () => { };
 		public event Action onSprintDeactivated = () => { };
@@ -55,6 +56,8 @@ namespace Infrastructure.Roots.AppRoot.Services.UserUnput
 
 			if (Input.GetKeyDown(KeyCode.LeftControl)) onCrouchActivated.Invoke();
 			if (Input.GetKeyUp(KeyCode.LeftControl)) onCrouchDeactivated.Invoke();
+			
+			if(Input.GetKeyDown(KeyCode.F5)) onSaveGame.Invoke();
 		}
 	}
 }
