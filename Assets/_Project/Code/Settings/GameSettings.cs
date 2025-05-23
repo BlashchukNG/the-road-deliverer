@@ -1,5 +1,7 @@
+using System.Collections.Generic;
+using Infrastructure.State.GameResources.Configs;
 using Infrastructure.State.Root;
-using Logic.Characters.Player.Locomotions;
+using Settings.Configs;
 using UnityEngine;
 
 namespace Settings
@@ -8,6 +10,7 @@ namespace Settings
 	public class GameSettings : ScriptableObject
 	{
 		public GameState baseSaveFile;
+		public List<ResourceConfig> configsResources;
 		public PlayerConfig configPlayer;
 	}
 }

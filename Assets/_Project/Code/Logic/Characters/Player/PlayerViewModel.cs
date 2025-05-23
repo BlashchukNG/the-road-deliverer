@@ -19,8 +19,12 @@ namespace Logic.Characters.Player
 		{
 			_diContainer = diContainer;
 			_input = _diContainer.Resolve<IUserInputService>();
-			_behaviour = new PlayerBehavior(_input, _diContainer.Resolve<IGameStateProvider>().GameState.Player,
-				_diContainer.Resolve<ISettingsProvider>().GameSettings.configPlayer.locomotionSettings.settings.Clone() as Locomotions.Settings);
+
+			var gameStateProvider = _diContainer.Resolve<IGameStateProvider>();
+			var settingsProvider = _diContainer.Resolve<ISettingsProvider>();
+
+			_behaviour = new PlayerBehavior(_input, gameStateProvider.GameState.Player,
+				settingsProvider.GameSettings.configPlayer.locomotionSettings.settings.Clone() as Locomotions.Settings);
 
 			_locomotion = new Locomotion(_behaviour, _input);
 		}

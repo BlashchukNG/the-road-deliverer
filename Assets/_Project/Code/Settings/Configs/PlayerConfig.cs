@@ -1,6 +1,7 @@
+using Logic.Characters.Player.Locomotions.Configs;
 using UnityEngine;
 
-namespace Logic.Characters.Player.Locomotions
+namespace Settings.Configs
 {
 	[CreateAssetMenu(fileName = "config player", menuName = "SETTINGS/Configs/Player/PlayerConfig", order = 0)]
 	public class PlayerConfig : ScriptableObject
