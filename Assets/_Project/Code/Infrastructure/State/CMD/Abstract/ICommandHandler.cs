@@ -1,4 +1,4 @@
-namespace Infrastructure.State.CMD
+namespace Infrastructure.State.CMD.Abstract
 {
 	public interface ICommandHandler<TCommand>
 		where TCommand : ICommand

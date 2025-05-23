@@ -1,29 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Infrastructure.DI;
+using Infrastructure.State.CMD.Abstract;
 
 namespace Infrastructure.State.CMD
 {
-	public interface ICommandProcessor
-	{
-		void RegisterCommand<TCommand>(TCommand command)
-			where TCommand : ICommand;
-
-		bool ProcessCommand<TCommand>(TCommand command)
-			where TCommand : ICommand;
-	}
-
 	public class CommandProcessor : ICommandProcessor
 	{
 		private readonly IGameStateProvider _gameStateProvider;
 		private readonly Dictionary<Type, object> _handlesMap = new();
 
 
-		public CommandProcessor(IGameStateProvider gameStateProvider)
+		public CommandProcessor(DIContainer diContainer)
 		{
-			_gameStateProvider = gameStateProvider;
+			_gameStateProvider = diContainer.Resolve<IGameStateProvider>();
 		}
 
-		public void RegisterCommand<TCommand>(TCommand command)
+		public void RegisterHandler<TCommand>(ICommandHandler<TCommand> command)
 			where TCommand : ICommand
 		{
 			_handlesMap[typeof(TCommand)] = command;
