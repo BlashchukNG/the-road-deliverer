@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Constants;
 using Infrastructure.State;
-using Logic.Characters.Base.Locomotions;
+using Logic.Characters.Player.Locomotions;
 using Logic.UserCamera;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ namespace Infrastructure.Roots.AppRoot.Services.ResourceLoader
 		public UIRootView GetPrefabUIRootView() => Load<UIRootView>(ResourcesConstants.UI_ROOT_VIEW);
 		public CameraController GetPrefabCameraController() => Load<CameraController>(ResourcesConstants.CAMERA_CONTROLLER);
 		public SaveFileConfig GetBaseSaveFile() => Resources.Load<SaveFileConfig>(ResourcesConstants.CONFIG_BASE_SAVE_FILE);
-		public LocomotionSettings GetPlayerLocomotionSettings() => Resources.Load<LocomotionSettingsConfig>(_resources["config player locomotion settings"]).settings;
+		public Settings GetPlayerLocomotionSettings() => Resources.Load<LocomotionSettingsConfig>(_resources["config player locomotion settings"]).settings;
 
 		public T GetPrefab<T>(string name)
 			where T : MonoBehaviour =>

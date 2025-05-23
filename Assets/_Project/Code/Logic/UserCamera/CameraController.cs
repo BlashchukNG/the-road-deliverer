@@ -1,6 +1,6 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.Updater;
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 using Infrastructure.State;
 using Infrastructure.State.Entities.UserCamera;
 using UnityEngine;
@@ -23,6 +23,8 @@ namespace Logic.UserCamera
 		{
 			_input = diContainer.Resolve<IUserInputService>();
 			_settings = diContainer.Resolve<IGameStateProvider>().GameState.CameraSettings;
+			
+			diContainer.Resolve<IUpdateService>().Add(this);
 			return this;
 		}
 

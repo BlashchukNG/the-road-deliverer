@@ -15,7 +15,5 @@ MonoBehaviour:
   resources:
   - name: ui root view
     path: root/ui root view
-  - name: camera controller
-    path: camera/camera controller
-  - name: config locomotin settings
-    path: configs/player/config locomotin settings
+  - name: config player locomotion settings
+    path: configs/player/config player locomotion settings

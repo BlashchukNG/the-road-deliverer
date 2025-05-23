@@ -1,48 +1,38 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
-using Infrastructure.Roots.AppRoot.Services.UserUnput;
+using Infrastructure.Roots.AppRoot.Services.Updater;
+using Infrastructure.Roots.AppRoot.Services.UserInput;
 using Infrastructure.State;
-using Logic.Characters.Base;
-using Logic.Characters.Base.Locomotions;
+using Logic.Characters.Player.Locomotions;
 using Logic.UserCamera;
 
 namespace Logic.Characters.Player
 {
-	public sealed class PlayerViewModel : BaseCharacterViewModel
+	public sealed class PlayerViewModel : ITick
 	{
 		private readonly IUserInputService _input;
-		private readonly CameraController _camera;
 		private readonly Locomotion _locomotion;
+		private readonly DIContainer _diContainer;
+		private readonly PlayerBehavior _behaviour;
 
-
-		public PlayerViewModel(ICharacterView view, DIContainer diContainer) : base(view, diContainer)
+		public PlayerViewModel(DIContainer diContainer)
 		{
-			_input = diContainer.Resolve<IUserInputService>();
-			_camera = diContainer.Resolve<CameraController>().SetFollowTarget(_view.Transform);
-
-			_view.onDestroy += Destroy;
-			CreateModel();
-
-			_locomotion = new Locomotion(_model, _input);
-		}
-
-		protected override void CreateModel()
-		{
-			_model = new CharacterModel(_view, _camera, _input, _diContainer.Resolve<IGameStateProvider>().GameState.Player,
+			_diContainer = diContainer;
+			_input = _diContainer.Resolve<IUserInputService>();
+			_behaviour = new PlayerBehavior(_input, _diContainer.Resolve<IGameStateProvider>().GameState.Player,
 				_diContainer.Resolve<IResourceLoaderService>().GetPlayerLocomotionSettings());
+
+			_locomotion = new Locomotion(_behaviour, _input);
 		}
 
-		public override void Tick(float delta)
+		public void Tick(float delta)
 		{
 			_locomotion.Update(delta);
 		}
 
-		public override void FixedTick(float delta)
+		public void AttachReferences(PlayerBinder playerBinder, CameraController camera)
 		{
-		}
-
-		private void Destroy()
-		{
+			_behaviour.AttachReferences(playerBinder, camera);
 		}
 	}
 }
