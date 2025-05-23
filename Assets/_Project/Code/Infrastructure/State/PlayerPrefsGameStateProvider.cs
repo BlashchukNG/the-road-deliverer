@@ -1,7 +1,7 @@
 using Infrastructure.DI;
-using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.State.Root;
 using R3;
+using Settings;
 using UnityEngine;
 
 namespace Infrastructure.State
@@ -14,14 +14,14 @@ namespace Infrastructure.State
 		public GameStateProxy GameState { get; private set; }
 		public GameSettingsStateProxy GameSettingsState { get; private set; }
 
-		private readonly SaveFileConfig _saveFileConfig;
+		private readonly ISettingsProvider _settings;
 
 		private GameState _gameStateOrigin;
 		private GameSettingsState _gameSettingsStateOrigin;
 
 		public PlayerPrefsGameStateProvider(DIContainer diContainer)
 		{
-			_saveFileConfig = diContainer.Resolve<IResourceLoaderService>().GetBaseSaveFile();
+			_settings = diContainer.Resolve<ISettingsProvider>();
 		}
 
 		public Observable<GameStateProxy> LoadGameState()
@@ -45,7 +45,7 @@ namespace Infrastructure.State
 
 		private GameStateProxy CreateGameStateFromSettings()
 		{
-			_gameStateOrigin = _saveFileConfig.state.Clone() as GameState;
+			_gameStateOrigin = _settings.GameSettings.baseSaveFile.Clone() as GameState;
 
 			Debug.Log($"GameStateProvider: state created from settings: {JsonUtility.ToJson(_gameStateOrigin, true)}");
 
@@ -91,11 +91,7 @@ namespace Infrastructure.State
 
 		private GameSettingsStateProxy CreateGameSettingsStateFromSettings()
 		{
-			_gameSettingsStateOrigin = new()
-			{
-				volumeMusic = 1f,
-				volumeSFX = 1f
-			};
+			_gameSettingsStateOrigin = _settings.AppSettings.settings.Clone() as GameSettingsState;
 
 			Debug.Log($"GameStateProvider: settings state created from settings: {JsonUtility.ToJson(_gameSettingsStateOrigin, true)}");
 

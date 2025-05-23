@@ -13,9 +13,6 @@ namespace Infrastructure.Roots.GarageScene.Views
 		[SerializeField] private CameraController _camera;
 		[SerializeField] private Transform _layerPlayer;
 
-		[Header("Prefabs")]
-		[SerializeField] private PlayerBinder _prefabPlayer;
-
 		private PlayerBinder _player;
 
 		public void Bind(WorldGarageViewModel viewModel)
@@ -30,8 +27,11 @@ namespace Infrastructure.Roots.GarageScene.Views
 			var assetInstantiateService = viewModel.DIContainer.Resolve<IAssetInstantiateService>();
 			var playerState = viewModel.DIContainer.Resolve<IGameStateProvider>().GameState.Player;
 
-			_player = assetInstantiateService.GetInstance(_prefabPlayer, _layerPlayer, playerState.Position.Value, Quaternion.Euler(playerState.Rotation.Value));
+			_player = assetInstantiateService.GetInstance(Resources.Load<PlayerBinder>(viewModel.PrefabPlayer), _layerPlayer, playerState.Position.Value, 
+				Quaternion.Euler(playerState.Rotation.Value));
+			
 			_player.Bind(viewModel.PlayerViewModel, _camera);
+			
 			_camera.SetFollowTarget(_player.CharacterController.transform);
 		}
 	}

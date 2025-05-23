@@ -9,16 +9,22 @@ namespace Infrastructure.State.Entities.Player.Characteristics.Proxy
 {
 	public sealed class CharacteristicProxy
 	{
-		public CharacteristicType Type { get; private set; }
-		public ReactiveProperty<int> Level { get; private set; }
-		public ReactiveProperty<float> Progress { get; private set; }
-		public ReactiveProperty<float> Modificator { get; private set; }
+		public string TitleLocKey { get; }
+		public string DescriptionLocKey { get; }
+
+		public CharacteristicType Type { get; }
+		public ReactiveProperty<int> Level { get; }
+		public ReactiveProperty<float> Progress { get; }
+		public ReactiveProperty<float> Modificator { get; }
 
 		private float _modToLinearProgression;
 		private float _modToQuadraticProgression;
 
 		public CharacteristicProxy(Characteristic characteristic)
 		{
+			TitleLocKey = characteristic.titleLocKey;
+			DescriptionLocKey = characteristic.descriptionLocKey;
+
 			Type = characteristic.type;
 
 			Level = new ReactiveProperty<int>(characteristic.level);

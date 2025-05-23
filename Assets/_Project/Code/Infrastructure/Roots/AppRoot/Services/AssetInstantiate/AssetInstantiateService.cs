@@ -1,7 +1,5 @@
 using Infrastructure.DI;
-using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.Updater;
-using Logic.UserCamera;
 using UnityEngine;
 using Utils.Coroutiner;
 
@@ -32,8 +30,6 @@ namespace Infrastructure.Roots.AppRoot.Services.AssetInstantiate
 
 			return updater;
 		}
-
-		public CameraController GetCameraController() => GetInstance(_diContainer.Resolve<IResourceLoaderService>().GetPrefabCameraController());
 
 		public T GetInstance<T>(T prefab, Transform root = null, Vector3 position = default, Quaternion rotation = default, bool bisDontDestroyOnLoad = false)
 			where T : MonoBehaviour

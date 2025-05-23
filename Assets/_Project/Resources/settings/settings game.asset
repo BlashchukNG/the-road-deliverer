@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f9c324bada4b13ac79d105c43ea849, type: 3}
-  m_Name: config base save
+  m_Script: {fileID: 11500000, guid: 3d958c1791fa4272a172f39ade1470ab, type: 3}
+  m_Name: settings game
   m_EditorClassIdentifier: 
-  state:
+  baseSaveFile:
     version: 1.0
+    globalEntityId: 0
     cameraSettings:
       offset: {x: 0, y: 20, z: -10}
       distance: 10

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Logic.Characters.Player.Locomotions
 {
-	[CreateAssetMenu(fileName = "config locomotin settings", menuName = "Configs/LocomotionSettingsConfig", order = 2)]
+	[CreateAssetMenu(fileName = "config locomotin settings", menuName = "SETTINGS/Configs/Player/LocomotionSettingsConfig", order = 0)]
 	public class LocomotionSettingsConfig : ScriptableObject
 	{
 		public Settings settings;

@@ -1,9 +1,9 @@
 ﻿using Constants;
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
-using Infrastructure.Roots.AppRoot.Services.ResourceLoader;
 using Infrastructure.Roots.AppRoot.Services.SceneLoader;
 using Infrastructure.State;
+using Settings;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils.Coroutiner;
@@ -14,12 +14,14 @@ namespace Infrastructure.Roots.AppRoot
 	{
 		private static AppEntryPoint _instance;
 
+		private const string PATH_UI_ROOT = "root/ui root view";
+
 		private readonly DIContainer _diContainer = new();
 
 		private UIRootView _uiRootView;
 		private CoroutineRunner _coroutineRunner;
-		private IResourceLoaderService _resourceLoaderService;
 		private IAssetInstantiateService _assetInstantiateService;
+		private ISettingsProvider _settingsProvider;
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		public static void LoadApp()
@@ -37,8 +39,10 @@ namespace Infrastructure.Roots.AppRoot
 			InitServices();
 		}
 
-		private void RunApp()
+		private async void RunApp()
 		{
+			await _settingsProvider.LoadGameSettingsAsync();
+			
 			var sceneLoader = _diContainer.Resolve<ISceneLoaderService>();
 		#if UNITY_EDITOR
 			var sceneName = SceneManager.GetActiveScene().name;
@@ -65,16 +69,16 @@ namespace Infrastructure.Roots.AppRoot
 
 		private void InitServices()
 		{
+			_settingsProvider = new SettingsProvider();
+			_diContainer.RegisterInstance(_settingsProvider);
+			
 			_assetInstantiateService = new AssetInstantiateService(_diContainer);
 			_diContainer.RegisterInstance(_assetInstantiateService);
-
-			_resourceLoaderService = new ResourceLoaderService();
-			_diContainer.RegisterInstance(_resourceLoaderService);
 
 			_coroutineRunner = _assetInstantiateService.GetCoroutineRunner();
 			_diContainer.RegisterInstance(_coroutineRunner);
 
-			_uiRootView = _assetInstantiateService.GetInstance(_resourceLoaderService.GetPrefabUIRootView(), bisDontDestroyOnLoad: true);
+			_uiRootView = _assetInstantiateService.GetInstance(Resources.Load<UIRootView>(PATH_UI_ROOT), bisDontDestroyOnLoad: true);
 			_diContainer.RegisterInstance(_uiRootView);
 
 			_diContainer.RegisterInstance<ISceneLoaderService>(new SceneLoaderService(_diContainer));
