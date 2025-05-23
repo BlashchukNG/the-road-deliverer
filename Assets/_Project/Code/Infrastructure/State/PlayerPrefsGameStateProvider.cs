@@ -99,6 +99,8 @@ namespace Infrastructure.State
 
 			Debug.Log($"GameStateProvider: settings state created from settings: {JsonUtility.ToJson(_gameSettingsStateOrigin, true)}");
 
+			SaveGameSettingsState();
+
 			return new GameSettingsStateProxy(_gameSettingsStateOrigin);
 		}
 
