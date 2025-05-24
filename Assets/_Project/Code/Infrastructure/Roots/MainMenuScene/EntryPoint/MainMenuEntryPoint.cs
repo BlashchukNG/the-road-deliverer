@@ -30,13 +30,13 @@ namespace Infrastructure.Roots.MainMenuScene.EntryPoint
 
 			Debug.Log($"Entering main menu entry point: {enterParams?.DebugData}");
 
-			return CreateExitToGarageSignal();
+			return CreateExitSignal();
 		}
 
-		private Observable<MainMenuExitParams> CreateExitToGarageSignal()
+		private Observable<MainMenuExitParams> CreateExitSignal()
 		{
 			var exitParams = new MainMenuExitParams(new GarageEnterParams("from main menu"));
-			var exitSceneRequest = _diContainer.Resolve<Subject<Unit>>(SignalTags.EXIT_SCENE_REQUEST);
+			var exitSceneRequest = _diContainer.Resolve<Subject<Unit>>(SignalTags.EXIT_TO_MAIN_MENU_SCENE_REQUEST);
 			var exitToGarageSignal = exitSceneRequest.Select(_ => exitParams);
 			return exitToGarageSignal;
 		}

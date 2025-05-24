@@ -3,7 +3,9 @@ using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.AppRoot.Services.Updater;
 using Infrastructure.Roots.AppRoot.Services.UserInput;
+using Infrastructure.Roots.GarageScene.Services.UI;
 using Infrastructure.Roots.GarageScene.ViewModels;
+using Infrastructure.Roots.GarageScene.Views;
 using Infrastructure.State;
 using UnityEngine;
 
@@ -14,14 +16,16 @@ namespace Infrastructure.Roots.GarageScene.Registrations
 		public static void Register(DIContainer diContainer)
 		{
 			var assetInstantiateService = diContainer.Resolve<IAssetInstantiateService>();
-			
+
 			var updater = assetInstantiateService.GetUpdater();
 			diContainer.RegisterInstance(updater);
 
 			RegisterInputService(diContainer);
 
-			diContainer.RegisterFactory(c => new UIGarageViewModel()).AsSingle();
-			diContainer.RegisterFactory(c => new WorldGarageViewModel(diContainer)).AsSingle();
+			diContainer.RegisterFactory(c => new GarageUIService(c)).AsSingle();
+			
+			diContainer.RegisterFactory(_ => new UIGarageRootViewModel()).AsSingle();
+			diContainer.RegisterFactory(c => new WorldGarageRootViewModel(diContainer)).AsSingle();
 		}
 
 		private static void RegisterInputService(DIContainer diContainer)

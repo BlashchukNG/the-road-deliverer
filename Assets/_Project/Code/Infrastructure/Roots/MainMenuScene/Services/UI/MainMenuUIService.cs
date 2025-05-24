@@ -2,7 +2,7 @@ using Constants;
 using Infrastructure.DI;
 using Infrastructure.Roots.MainMenuScene.Views;
 using Infrastructure.Roots.MainMenuScene.Views.UI.PopupSettings;
-using Infrastructure.Roots.MainMenuScene.Views.UI.ScreenMainMenu;
+using Infrastructure.Roots.MainMenuScene.Views.UI.Screens;
 using R3;
 using VVM.Root;
 
@@ -14,7 +14,7 @@ namespace Infrastructure.Roots.MainMenuScene.Services.UI
 
 		public MainMenuUIService(DIContainer diContainer) : base(diContainer)
 		{
-			_exitSceneRequest = _diContainer.Resolve<Subject<Unit>>(SignalTags.EXIT_SCENE_REQUEST);
+			_exitSceneRequest = _diContainer.Resolve<Subject<Unit>>(SignalTags.EXIT_TO_MAIN_MENU_SCENE_REQUEST);
 		}
 
 		public ScreenMainMenuViewModel OpenMainScreen()

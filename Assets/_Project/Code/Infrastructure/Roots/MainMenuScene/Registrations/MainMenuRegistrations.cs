@@ -9,7 +9,7 @@ namespace Infrastructure.Roots.MainMenuScene.Registrations
 	{
 		public static void Register(DIContainer diContainer, MainMenuEnterParams enterParams)
 		{
-			diContainer.RegisterInstance(SignalTags.EXIT_SCENE_REQUEST, new Subject<Unit>());
+			diContainer.RegisterInstance(SignalTags.EXIT_TO_MAIN_MENU_SCENE_REQUEST, new Subject<Unit>());
 		}
 	}
 }

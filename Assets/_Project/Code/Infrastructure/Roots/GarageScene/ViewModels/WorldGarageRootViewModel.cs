@@ -5,7 +5,7 @@ using Settings;
 
 namespace Infrastructure.Roots.GarageScene.ViewModels
 {
-	public sealed class WorldGarageViewModel : ITick
+	public sealed class WorldGarageRootViewModel : ITick
 	{
 		public DIContainer DIContainer => _diContainer;
 		public PlayerViewModel PlayerViewModel => _playerViewModel;
@@ -16,7 +16,7 @@ namespace Infrastructure.Roots.GarageScene.ViewModels
 		private readonly ISettingsProvider _settingsProvider;
 
 
-		public WorldGarageViewModel(DIContainer diContainer)
+		public WorldGarageRootViewModel(DIContainer diContainer)
 		{
 			_diContainer = diContainer;
 			_settingsProvider = _diContainer.Resolve<ISettingsProvider>();

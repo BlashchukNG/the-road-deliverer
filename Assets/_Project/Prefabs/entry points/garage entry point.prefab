@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925bd3b107fc4db6b16162132911f269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabRootBinder: {fileID: 4155237582926826165, guid: d944173e5835868409e92d85d3b12703, type: 3}
+  _uiRootBinderPrefab: {fileID: 4155237582926826165, guid: d944173e5835868409e92d85d3b12703, type: 3}
   _prefabWorldRootBinder: {fileID: 299906346981666788, guid: 87f43640ff360374dbfe498ced61c171, type: 3}

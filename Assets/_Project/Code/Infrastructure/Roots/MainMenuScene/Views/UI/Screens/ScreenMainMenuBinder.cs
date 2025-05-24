@@ -1,7 +1,7 @@
 using UnityEngine;
 using VVM.UI;
 
-namespace Infrastructure.Roots.MainMenuScene.Views.UI.ScreenMainMenu
+namespace Infrastructure.Roots.MainMenuScene.Views.UI.Screens
 {
 	public sealed class ScreenMainMenuBinder : WindowBinder<ScreenMainMenuViewModel>
 	{

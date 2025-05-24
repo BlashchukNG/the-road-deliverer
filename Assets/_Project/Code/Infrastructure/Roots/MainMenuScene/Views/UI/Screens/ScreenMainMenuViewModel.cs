@@ -2,7 +2,7 @@ using Infrastructure.Roots.MainMenuScene.Services.UI;
 using R3;
 using VVM.UI;
 
-namespace Infrastructure.Roots.MainMenuScene.Views.UI.ScreenMainMenu
+namespace Infrastructure.Roots.MainMenuScene.Views.UI.Screens
 {
 	public sealed class ScreenMainMenuViewModel : WindowViewModel
 	{
