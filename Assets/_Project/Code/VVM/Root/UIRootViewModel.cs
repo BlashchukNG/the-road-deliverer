@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ObservableCollections;
+using R3;
+using VVM.UI;
+
+namespace VVM.Root
+{
+	public sealed class UIRootViewModel : IDisposable
+	{
+		public ReadOnlyReactiveProperty<WindowViewModel> OpenedScreen => _openedScreen;
+		public IObservableCollection<WindowViewModel> OpenedSPopups => _openedPopups;
+
+		private readonly ReactiveProperty<WindowViewModel> _openedScreen = new(null);
+		private readonly ObservableList<WindowViewModel> _openedPopups = new();
+		private readonly Dictionary<WindowViewModel, IDisposable> _popupSubscriptions = new();
+
+		public void OpenScreen(WindowViewModel screenViewModel)
+		{
+			_openedScreen.Value?.Dispose();
+			_openedScreen.Value = screenViewModel;
+		}
+
+		public void OpenPopup(WindowViewModel popupViewModel)
+		{
+			if (_openedPopups.Contains(popupViewModel))
+				return;
+
+			var subscription = popupViewModel.CloseRequested.Subscribe(ClosePopup);
+			_popupSubscriptions.Add(popupViewModel, subscription);
+
+			_openedPopups.Add(popupViewModel);
+		}
+
+		public void ClosePopup(WindowViewModel popupViewModel)
+		{
+			if (_openedPopups.Contains(popupViewModel))
+			{
+				popupViewModel.Dispose();
+				_openedPopups.Remove(popupViewModel);
+
+				var subscription = _popupSubscriptions[popupViewModel];
+				subscription?.Dispose();
+				_popupSubscriptions.Remove(popupViewModel);
+			}
+		}
+
+		public void ClosePopup(string popupId)
+		{
+			var popup = _openedPopups.FirstOrDefault(p => p.Id == popupId);
+			ClosePopup(popup);
+		}
+
+		public void CloseAllPopups()
+		{
+			foreach (var popup in _openedPopups)
+				ClosePopup(popup);
+		}
+
+		public void Dispose()
+		{
+			CloseAllPopups();
+			_openedScreen.Value?.Dispose();
+		}
+	}
+}
