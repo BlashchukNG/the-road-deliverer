@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SPR_SciFi_Greeble_Hexagon02_0: -1720907494709477595
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
