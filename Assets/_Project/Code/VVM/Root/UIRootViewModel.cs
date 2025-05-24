@@ -10,7 +10,7 @@ namespace VVM.Root
 	public sealed class UIRootViewModel : IDisposable
 	{
 		public ReadOnlyReactiveProperty<WindowViewModel> OpenedScreen => _openedScreen;
-		public IObservableCollection<WindowViewModel> OpenedSPopups => _openedPopups;
+		public IObservableCollection<WindowViewModel> OpenedPopups => _openedPopups;
 
 		private readonly ReactiveProperty<WindowViewModel> _openedScreen = new(null);
 		private readonly ObservableList<WindowViewModel> _openedPopups = new();
