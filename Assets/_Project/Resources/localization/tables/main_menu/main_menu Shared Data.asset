@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: loc_lbl_btn_start
     m_Metadata:
       m_Items: []
+  - m_Id: 1857686696923136
+    m_Key: loc_lbl_btn_to_popup_settings
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -1,4 +1,5 @@
 using Infrastructure.DI;
+using Infrastructure.Roots.GameplayScene.Services.UI;
 using Infrastructure.Roots.GameplayScene.View;
 
 namespace Infrastructure.Roots.GameplayScene.Registrations
@@ -7,8 +8,9 @@ namespace Infrastructure.Roots.GameplayScene.Registrations
 	{
 		public static void Register(DIContainer diContainer)
 		{
-			diContainer.RegisterFactory(c => new UIGameplayViewModel()).AsSingle();
-			diContainer.RegisterFactory(c => new WorldGameplayViewModel()).AsSingle();
+			diContainer.RegisterFactory(c => new GameplayUIService(c)).AsSingle();
+			diContainer.RegisterFactory(c => new UIGameplayRootViewModel()).AsSingle();
+			diContainer.RegisterFactory(c => new WorldGameplayRootViewModel()).AsSingle();
 		}
 	}
 }

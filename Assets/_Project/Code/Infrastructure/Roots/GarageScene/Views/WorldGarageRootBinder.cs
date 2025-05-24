@@ -15,22 +15,22 @@ namespace Infrastructure.Roots.GarageScene.Views
 
 		private PlayerBinder _player;
 
-		public void Bind(WorldGarageViewModel viewModel)
+		public void Bind(WorldGarageRootViewModel rootViewModel)
 		{
 			_camera = FindFirstObjectByType<CameraController>();
-			_camera.SetInput(viewModel.DIContainer);
-			CreatePlayer(viewModel);
+			_camera.SetInput(rootViewModel.DIContainer);
+			CreatePlayer(rootViewModel);
 		}
 
-		private void CreatePlayer(WorldGarageViewModel viewModel)
+		private void CreatePlayer(WorldGarageRootViewModel rootViewModel)
 		{
-			var assetInstantiateService = viewModel.DIContainer.Resolve<IAssetInstantiateService>();
-			var playerState = viewModel.DIContainer.Resolve<IGameStateProvider>().GameState.Player;
+			var assetInstantiateService = rootViewModel.DIContainer.Resolve<IAssetInstantiateService>();
+			var playerState = rootViewModel.DIContainer.Resolve<IGameStateProvider>().GameState.Player;
 
-			_player = assetInstantiateService.GetInstance(Resources.Load<PlayerBinder>(viewModel.PrefabPlayer), _layerPlayer, playerState.Position.Value, 
+			_player = assetInstantiateService.GetInstance(Resources.Load<PlayerBinder>(rootViewModel.PrefabPlayer), _layerPlayer, playerState.Position.Value, 
 				Quaternion.Euler(playerState.Rotation.Value));
 			
-			_player.Bind(viewModel.PlayerViewModel, _camera);
+			_player.Bind(rootViewModel.PlayerViewModel, _camera);
 			
 			_camera.SetFollowTarget(_player.CharacterController.transform);
 		}

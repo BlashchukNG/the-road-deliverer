@@ -27,7 +27,7 @@ namespace Editor.GoogleSheetsSync
 			try
 			{
 				var service = GetSheetsService();
-				var tables = GetAllStringTables();
+				var tables = GetAllStringTables(); 
 
 				foreach (var table in tables)
 				{
