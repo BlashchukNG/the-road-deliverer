@@ -12,6 +12,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: b close
       objectReference: {fileID: 0}
+    - target: {fileID: 1263231038281831929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263231038281831929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263231038281831929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263231038281831929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263231038281831929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263231038281831929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
     - target: {fileID: 4401523531529536929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
       propertyPath: m_EffectDistance.x
       value: 5
@@ -100,8 +124,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4401523531529536929, guid: 657c6ed84027be24b9af21faf7d7dc7e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

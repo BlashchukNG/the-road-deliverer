@@ -1,6 +1,6 @@
 using VVM.UI;
 
-namespace Infrastructure.Roots.GarageScene.Views.UI
+namespace Infrastructure.Roots.GarageScene.Views.UI.ScreenGarage
 {
 	public sealed class ScreenGarageViewModel : WindowViewModel
 	{
