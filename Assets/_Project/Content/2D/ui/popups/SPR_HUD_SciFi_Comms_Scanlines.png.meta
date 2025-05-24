@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: 65a96f0800c218c439c148763c8db7fe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3160100469317614795
+    second: SPR_HUD_SciFi_Comms_Scanlines_0
+  - first:
+      213: -2561901399288870943
+    second: SPR_HUD_SciFi_Comms_Scanlines_1
+  - first:
+      213: -7509238896517854503
+    second: SPR_HUD_SciFi_Comms_Scanlines_2
+  - first:
+      213: 1759201478136416940
+    second: SPR_HUD_SciFi_Comms_Scanlines_3
+  - first:
+      213: -2283302467023123548
+    second: SPR_HUD_SciFi_Comms_Scanlines_4
+  - first:
+      213: 8339065839143594836
+    second: SPR_HUD_SciFi_Comms_Scanlines_5
+  - first:
+      213: 3438844995380058243
+    second: SPR_HUD_SciFi_Comms_Scanlines_6
+  - first:
+      213: -6861994931939176759
+    second: SPR_HUD_SciFi_Comms_Scanlines_7
+  - first:
+      213: 4843064231557310707
+    second: SPR_HUD_SciFi_Comms_Scanlines_8
+  - first:
+      213: -7059918034201263444
+    second: SPR_HUD_SciFi_Comms_Scanlines_9
+  - first:
+      213: 2319395390125740643
+    second: SPR_HUD_SciFi_Comms_Scanlines_10
+  - first:
+      213: -8519265253741560072
+    second: SPR_HUD_SciFi_Comms_Scanlines_11
+  - first:
+      213: 7578765731026790626
+    second: SPR_HUD_SciFi_Comms_Scanlines_12
+  - first:
+      213: -2782389094056590067
+    second: SPR_HUD_SciFi_Comms_Scanlines_13
+  - first:
+      213: -7819541205556676031
+    second: SPR_HUD_SciFi_Comms_Scanlines_14
+  - first:
+      213: -5239756034364531129
+    second: SPR_HUD_SciFi_Comms_Scanlines_15
+  - first:
+      213: 7781529236961668750
+    second: SPR_HUD_SciFi_Comms_Scanlines_16
+  - first:
+      213: -7495527740235868124
+    second: SPR_HUD_SciFi_Comms_Scanlines_17
+  - first:
+      213: 349997606432200358
+    second: SPR_HUD_SciFi_Comms_Scanlines_18
+  - first:
+      213: 4810162499754551637
+    second: SPR_HUD_SciFi_Comms_Scanlines_19
+  - first:
+      213: -6931971202781573772
+    second: SPR_HUD_SciFi_Comms_Scanlines_20
+  - first:
+      213: 3622390780354707706
+    second: SPR_HUD_SciFi_Comms_Scanlines_21
+  - first:
+      213: -4504582882896669333
+    second: SPR_HUD_SciFi_Comms_Scanlines_22
+  - first:
+      213: 180982759791215997
+    second: SPR_HUD_SciFi_Comms_Scanlines_23
+  - first:
+      213: -5266617764119926677
+    second: SPR_HUD_SciFi_Comms_Scanlines_24
+  - first:
+      213: -1754723818780026670
+    second: SPR_HUD_SciFi_Comms_Scanlines_25
+  - first:
+      213: 4961555180743812277
+    second: SPR_HUD_SciFi_Comms_Scanlines_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 505
+        width: 512
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bccb83842aeeadb20800000000000000
+      internalID: 3160100469317614795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e78fc9304c427cd0800000000000000
+      internalID: -2561901399288870943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 467
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dac18f5203d9c790800000000000000
+      internalID: -7509238896517854503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caac9a87c60f96810800000000000000
+      internalID: 1759201478136416940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 429
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab4052f0841050e0800000000000000
+      internalID: -2283302467023123548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 410
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45bafbcc2305ab370800000000000000
+      internalID: 8339065839143594836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 391
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3881243bd4b39bf20800000000000000
+      internalID: 3438844995380058243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 372
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ce0c3f37fb45c0a0800000000000000
+      internalID: -6861994931939176759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 353
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8af5a4245063340800000000000000
+      internalID: 4843064231557310707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 334
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca24f04f3f1260e90800000000000000
+      internalID: -7059918034201263444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 315
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3629f1291d5203020800000000000000
+      internalID: 2319395390125740643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 296
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fef763836d75c980800000000000000
+      internalID: -8519265253741560072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 277
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e861c1474f2d2960800000000000000
+      internalID: 7578765731026790626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 259
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0506d55cd7f269d0800000000000000
+      internalID: -2782389094056590067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ab34804b86b7390800000000000000
+      internalID: -7819541205556676031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 221
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e1efde5a5a847b0800000000000000
+      internalID: -5239756034364531129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 202
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8eaa6adc9b8dfb60800000000000000
+      internalID: 7781529236961668750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 183
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4289727bb398af790800000000000000
+      internalID: -7495527740235868124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 164
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a6d0abf7f07bd400800000000000000
+      internalID: 349997606432200358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 145
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55966c5ee4121c240800000000000000
+      internalID: 4810162499754551637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47d87f01be0bccf90800000000000000
+      internalID: -6931971202781573772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 107
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af041b4f831554230800000000000000
+      internalID: 3622390780354707706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6593abfbb18c71c0800000000000000
+      internalID: -4504582882896669333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 69
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7543d37cdaf28200800000000000000
+      internalID: 180982759791215997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b68aed91c0739e6b0800000000000000
+      internalID: -5266617764119926677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 31
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d813b6dbf7f5a7e0800000000000000
+      internalID: -1754723818780026670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_HUD_SciFi_Comms_Scanlines_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 512
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b4ebb1462cfad440800000000000000
+      internalID: 4961555180743812277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SPR_HUD_SciFi_Comms_Scanlines_0: 3160100469317614795
+      SPR_HUD_SciFi_Comms_Scanlines_1: -2561901399288870943
+      SPR_HUD_SciFi_Comms_Scanlines_10: 2319395390125740643
+      SPR_HUD_SciFi_Comms_Scanlines_11: -8519265253741560072
+      SPR_HUD_SciFi_Comms_Scanlines_12: 7578765731026790626
+      SPR_HUD_SciFi_Comms_Scanlines_13: -2782389094056590067
+      SPR_HUD_SciFi_Comms_Scanlines_14: -7819541205556676031
+      SPR_HUD_SciFi_Comms_Scanlines_15: -5239756034364531129
+      SPR_HUD_SciFi_Comms_Scanlines_16: 7781529236961668750
+      SPR_HUD_SciFi_Comms_Scanlines_17: -7495527740235868124
+      SPR_HUD_SciFi_Comms_Scanlines_18: 349997606432200358
+      SPR_HUD_SciFi_Comms_Scanlines_19: 4810162499754551637
+      SPR_HUD_SciFi_Comms_Scanlines_2: -7509238896517854503
+      SPR_HUD_SciFi_Comms_Scanlines_20: -6931971202781573772
+      SPR_HUD_SciFi_Comms_Scanlines_21: 3622390780354707706
+      SPR_HUD_SciFi_Comms_Scanlines_22: -4504582882896669333
+      SPR_HUD_SciFi_Comms_Scanlines_23: 180982759791215997
+      SPR_HUD_SciFi_Comms_Scanlines_24: -5266617764119926677
+      SPR_HUD_SciFi_Comms_Scanlines_25: -1754723818780026670
+      SPR_HUD_SciFi_Comms_Scanlines_26: 4961555180743812277
+      SPR_HUD_SciFi_Comms_Scanlines_3: 1759201478136416940
+      SPR_HUD_SciFi_Comms_Scanlines_4: -2283302467023123548
+      SPR_HUD_SciFi_Comms_Scanlines_5: 8339065839143594836
+      SPR_HUD_SciFi_Comms_Scanlines_6: 3438844995380058243
+      SPR_HUD_SciFi_Comms_Scanlines_7: -6861994931939176759
+      SPR_HUD_SciFi_Comms_Scanlines_8: 4843064231557310707
+      SPR_HUD_SciFi_Comms_Scanlines_9: -7059918034201263444
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
