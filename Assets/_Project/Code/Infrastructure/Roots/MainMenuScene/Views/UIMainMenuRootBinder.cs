@@ -2,7 +2,7 @@ using Extensions;
 using R3;
 using UnityEngine;
 
-namespace Infrastructure.Roots.MainMenuScene.View
+namespace Infrastructure.Roots.MainMenuScene.Views
 {
 	public sealed class UIMainMenuRootBinder : MonoBehaviour
 	{

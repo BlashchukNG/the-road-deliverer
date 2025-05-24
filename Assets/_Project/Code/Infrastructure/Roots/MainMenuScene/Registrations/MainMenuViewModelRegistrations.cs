@@ -1,6 +1,6 @@
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
-using Infrastructure.Roots.MainMenuScene.View;
+using Infrastructure.Roots.MainMenuScene.Views;
 
 namespace Infrastructure.Roots.MainMenuScene.Registrations
 {

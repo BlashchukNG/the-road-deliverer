@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Infrastructure.Roots.MainMenuScene.View
+namespace Infrastructure.Roots.MainMenuScene.Views
 {
 	public sealed class MainMenuButton : MonoBehaviour
 	{

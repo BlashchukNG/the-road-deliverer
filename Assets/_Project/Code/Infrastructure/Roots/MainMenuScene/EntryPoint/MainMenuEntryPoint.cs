@@ -4,7 +4,7 @@ using Infrastructure.Roots.AppRoot.Services.AssetInstantiate;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.Registrations;
-using Infrastructure.Roots.MainMenuScene.View;
+using Infrastructure.Roots.MainMenuScene.Views;
 using R3;
 using UnityEngine;
 
