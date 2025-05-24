@@ -5,6 +5,9 @@ namespace Infrastructure.State.GameResources
 	[Serializable]
 	public sealed class ResourceData : ICloneable
 	{
+		public string typeId;
+		
+		//переработать!
 		public string titleLocKey;
 		public string descriptionLocKey;
 		

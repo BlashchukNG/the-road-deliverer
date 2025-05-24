@@ -1,3 +1,4 @@
+using System;
 using Constants;
 using Infrastructure.DI;
 using Infrastructure.Roots.AppRoot;
@@ -8,6 +9,9 @@ using Infrastructure.Roots.GameplayScene.Services.UI;
 using Infrastructure.Roots.GameplayScene.View;
 using Infrastructure.Roots.GarageScene.EnterExitParams;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
+using Infrastructure.State.CMD;
+using Infrastructure.State.CMD.Commands.GameResources;
+using Infrastructure.State.GameResources;
 using R3;
 using UnityEngine;
 
@@ -74,5 +78,7 @@ namespace Infrastructure.Roots.GameplayScene.EntryPoint
 			var uiService = _viewsDIContainer.Resolve<GameplayUIService>();
 			uiService.OpenMainScreen();
 		}
+
+		
 	}
 }

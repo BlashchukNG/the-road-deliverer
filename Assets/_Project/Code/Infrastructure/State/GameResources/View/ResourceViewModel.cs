@@ -4,6 +4,7 @@ namespace Infrastructure.State.GameResources.View
 {
 	public sealed class ResourceViewModel
 	{
+		public string TypeID { get; }
 		public string TitleLocKey { get; }
 		public string DescriptionLocKey { get; }
 		public ResourceType Type { get; }
@@ -11,6 +12,7 @@ namespace Infrastructure.State.GameResources.View
 
 		public ResourceViewModel(ResourceProxy resource)
 		{
+			TypeID = resource.TypeID;
 			TitleLocKey = resource.TitleLocKey;
 			DescriptionLocKey = resource.DescriptionLocKey;
 			Type = resource.Type;

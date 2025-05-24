@@ -20,7 +20,7 @@ namespace Infrastructure.Roots.GarageScene.Services.UI
 
 		public ScreenGarageViewModel OpenMainScreen()
 		{
-			var viewModel = new ScreenGarageViewModel(this, _exitSceneToMainMenuRequest, _exitSceneToGameplayRequest);
+			var viewModel = new ScreenGarageViewModel(_diContainer, _exitSceneToMainMenuRequest, _exitSceneToGameplayRequest);
 			var rootUI = _diContainer.Resolve<UIGarageRootViewModel>();
 			rootUI.OpenScreen(viewModel);
 			return viewModel;

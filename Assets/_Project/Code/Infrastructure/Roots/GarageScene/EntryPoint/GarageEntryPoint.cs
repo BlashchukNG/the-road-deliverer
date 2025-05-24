@@ -9,6 +9,9 @@ using Infrastructure.Roots.GarageScene.Services.UI;
 using Infrastructure.Roots.GarageScene.ViewModels;
 using Infrastructure.Roots.GarageScene.Views;
 using Infrastructure.Roots.MainMenuScene.EnterExitParams;
+using Infrastructure.State.CMD;
+using Infrastructure.State.CMD.Commands.GameResources;
+using Infrastructure.State.GameResources;
 using R3;
 using UnityEngine;
 
@@ -35,6 +38,30 @@ namespace Infrastructure.Roots.GarageScene.EntryPoint
 			Debug.Log($"Entering main menu entry point: {enterParams?.DebugData}");
 
 			return CreateExitSignal();
+		}
+		
+		//debug update
+		private void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.F2))
+			{
+				_viewsDIContainer.Resolve<CommandProcessor>().ProcessCommand(new CMDResourcesAdd(ResourceType.Soft, 10));
+			}
+			
+			if (Input.GetKeyDown(KeyCode.F3))
+			{
+				_viewsDIContainer.Resolve<CommandProcessor>().ProcessCommand(new CMDResourcesSpend(ResourceType.Soft, 5));
+			}
+			
+			if (Input.GetKeyDown(KeyCode.F6))
+			{
+				_viewsDIContainer.Resolve<CommandProcessor>().ProcessCommand(new CMDResourcesAdd(ResourceType.Hard, 5));
+			}
+			
+			if (Input.GetKeyDown(KeyCode.F7))
+			{
+				_viewsDIContainer.Resolve<CommandProcessor>().ProcessCommand(new CMDResourcesSpend(ResourceType.Hard, 2));
+			}
 		}
 
 		private Observable<GarageExitParams> CreateExitSignal()

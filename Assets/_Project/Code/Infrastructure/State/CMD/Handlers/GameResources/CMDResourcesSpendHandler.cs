@@ -32,7 +32,7 @@ namespace Infrastructure.State.CMD.Handlers.GameResources
 
 			if (requiredResource.Amount.Value < command.amount)
 			{
-				Debug.LogError($"CMDResourcesSpendHandler: Trying to spend more than existed |{command.amount} to resource {requiredType}|");
+				Debug.LogError($"CMDResourcesSpendHandler: Trying to spend more than existed | spend: {command.amount} to resource {requiredType}|");
 				return false;
 			}
 

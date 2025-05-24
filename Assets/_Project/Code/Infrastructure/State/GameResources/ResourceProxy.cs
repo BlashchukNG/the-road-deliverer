@@ -4,6 +4,7 @@ namespace Infrastructure.State.GameResources
 {
 	public sealed class ResourceProxy
 	{
+		public string TypeID { get; }
 		public string TitleLocKey { get; }
 		public string DescriptionLocKey { get; }
 
@@ -17,6 +18,7 @@ namespace Infrastructure.State.GameResources
 		{
 			origin = data;
 			
+			TypeID = data.typeId;
 			TitleLocKey = data.titleLocKey;
 			DescriptionLocKey = data.descriptionLocKey;
 			Type = data.type;
