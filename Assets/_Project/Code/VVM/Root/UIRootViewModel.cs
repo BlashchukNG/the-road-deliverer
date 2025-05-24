@@ -7,7 +7,7 @@ using VVM.UI;
 
 namespace VVM.Root
 {
-	public sealed class UIRootViewModel : IDisposable
+	public class UIRootViewModel : IDisposable
 	{
 		public ReadOnlyReactiveProperty<WindowViewModel> OpenedScreen => _openedScreen;
 		public IObservableCollection<WindowViewModel> OpenedPopups => _openedPopups;

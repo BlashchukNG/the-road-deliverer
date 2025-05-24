@@ -1,4 +1,3 @@
-using Constants;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,6 +6,10 @@ namespace Utils
 	[RequireComponent(typeof(CanvasGroup))]
 	public sealed class CanvasGroupShowHideController : MonoBehaviour
 	{
+		public float Duration => _duration;
+
+		[SerializeField] private float _duration = 0.5f;
+
 		private CanvasGroup _canvasGroup;
 
 		private void Awake()
@@ -19,12 +22,12 @@ namespace Utils
 
 		public void Show()
 		{
-			_canvasGroup.DOFade(1, InfrastructureConstants.SHOW_HIDE_LOADING_SCREEN_DURATION);
+			_canvasGroup.DOFade(1, _duration);
 		}
 
 		public void Hide()
 		{
-			_canvasGroup.DOFade(0, InfrastructureConstants.SHOW_HIDE_LOADING_SCREEN_DURATION);
+			_canvasGroup.DOFade(0, _duration);
 		}
 	}
 }

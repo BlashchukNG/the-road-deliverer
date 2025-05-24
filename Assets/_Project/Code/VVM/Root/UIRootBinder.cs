@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VVM.Root
 {
-	public sealed class UIRootBinder : MonoBehaviour
+	public class UIRootBinder : MonoBehaviour
 	{
 		[SerializeField] private WindowsContainer _container;
 		
@@ -31,6 +31,15 @@ namespace VVM.Root
 			{
 				_container.ClosePopup(e.Value);
 			}));
+			
+			OnBind(viewModel);
+		}
+		
+		protected virtual void OnBind(UIRootViewModel viewModel) {}
+
+		private void OnDestroy()
+		{
+			_subscriptions.Dispose();
 		}
 	}
 }

@@ -839,9 +839,9 @@ MonoBehaviour:
   _rect: {fileID: 6747463061771204223}
   _buttonCloseRect: {fileID: 5408807681804694987}
   _contentCanvasGroup: {fileID: 4156888741813777029}
-  _durationChangeSize: 1
-  _durationFade: 0.5
-  _durationButtonCloseShow: 1
+  _durationChangeSize: 0.5
+  _durationFade: 0.25
+  _durationButtonCloseShow: 0.25
   _minValue: 65
   _endValue: 1500
   _isHorizontal: 1
