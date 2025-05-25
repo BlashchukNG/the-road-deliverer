@@ -14,9 +14,9 @@ TagManager:
   - ground
   - player
   - character
-  - blocked camera ray layout
-  - door
   - 
+  - door
+  - walls
   - 
   - 
   - 
