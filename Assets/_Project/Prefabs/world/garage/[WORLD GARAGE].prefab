@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9167205173497190120
 Transform:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7628247050001774668
 Transform:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7404152793795508547
 Transform:
   m_ObjectHideFlags: 0
@@ -3909,7 +3909,7 @@ PrefabInstance:
     - target: {fileID: 7345721775339839762, guid: 83843ecb41b9a6549b0d99ed8737af1c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 72bf9534648138e4899abdb5c709525c, type: 2}
+      objectReference: {fileID: 2100000, guid: ec5ff0989bce9e245b8e86799f4f22d2, type: 2}
     - target: {fileID: 8483114656370809469, guid: 83843ecb41b9a6549b0d99ed8737af1c, type: 3}
       propertyPath: m_RootOrder
       value: 49
@@ -5641,7 +5641,7 @@ PrefabInstance:
     - target: {fileID: 889548996917176660, guid: f9e3988fea3fa1c439f7ae24e7297153, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 84d3b8fe746ad694783d474ede6a5899, type: 2}
+      objectReference: {fileID: 2100000, guid: cdd3260b3e856c34eaf1237dea7e8f11, type: 2}
     - target: {fileID: 1682284030833330305, guid: f9e3988fea3fa1c439f7ae24e7297153, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Base_Pillar_01 (204)
@@ -11232,7 +11232,7 @@ PrefabInstance:
     - target: {fileID: 7345721775339839762, guid: 83843ecb41b9a6549b0d99ed8737af1c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 72bf9534648138e4899abdb5c709525c, type: 2}
+      objectReference: {fileID: 2100000, guid: ec5ff0989bce9e245b8e86799f4f22d2, type: 2}
     - target: {fileID: 8483114656370809469, guid: 83843ecb41b9a6549b0d99ed8737af1c, type: 3}
       propertyPath: m_RootOrder
       value: 47
@@ -16225,7 +16225,7 @@ PrefabInstance:
     - target: {fileID: 889548996917176660, guid: f9e3988fea3fa1c439f7ae24e7297153, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 84d3b8fe746ad694783d474ede6a5899, type: 2}
+      objectReference: {fileID: 2100000, guid: cdd3260b3e856c34eaf1237dea7e8f11, type: 2}
     - target: {fileID: 1682284030833330305, guid: f9e3988fea3fa1c439f7ae24e7297153, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Base_Pillar_01 (203)
