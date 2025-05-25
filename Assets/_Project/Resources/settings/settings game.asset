@@ -23,7 +23,7 @@ MonoBehaviour:
       maxDistance: 30
       rotationSpeed: 100
       yaw: 0
-      zoomSpeed: 200
+      zoomSpeed: 600
       zoomSmooth: 10
     player:
       id: 0
