@@ -1,3 +1,4 @@
+using Infrastructure.State.GameResources.Configs;
 using R3;
 
 namespace Infrastructure.State.GameResources
@@ -14,14 +15,15 @@ namespace Infrastructure.State.GameResources
 		public readonly ResourceData origin;
 		
 
-		public ResourceProxy(ResourceData data)
+		public ResourceProxy(ResourceData data, ResourceConfig config)
 		{
 			origin = data;
-			
+
 			TypeID = data.typeId;
-			TitleLocKey = data.titleLocKey;
-			DescriptionLocKey = data.descriptionLocKey;
 			Type = data.type;
+
+			TitleLocKey = config.titleLocKey;
+			DescriptionLocKey = config.descriptionLocKey;
 
 			Amount = new ReactiveProperty<int>(data.amount);
 			Amount.Skip(1).Subscribe(value => data.amount = value);

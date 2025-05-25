@@ -1,4 +1,5 @@
 using Infrastructure.DI;
+using Infrastructure.State.GameResources;
 using Infrastructure.State.Root;
 using R3;
 using Settings;
@@ -35,7 +36,7 @@ namespace Infrastructure.State
 			{
 				var json = PlayerPrefs.GetString(GAME_STATE_KEY);
 				_gameStateOrigin = JsonUtility.FromJson<GameState>(json);
-				GameState = new GameStateProxy(_gameStateOrigin);
+				GameState = new GameStateProxy(_gameStateOrigin, _settings.GameSettings.configsResources);
 
 				Debug.Log($"GameStateProvider: state loaded: {json}");
 			}
@@ -47,11 +48,11 @@ namespace Infrastructure.State
 		{
 			_gameStateOrigin = _settings.GameSettings.baseSaveFile.Clone() as GameState;
 			foreach (var config in _settings.GameSettings.configsResources)
-				_gameStateOrigin?.resources.Add(config.resource);
+				_gameStateOrigin?.resources.Add(new ResourceData(config));
 
 			Debug.Log($"GameStateProvider: state created from settings: {JsonUtility.ToJson(_gameStateOrigin, true)}");
 
-			return new GameStateProxy(_gameStateOrigin);
+			return new GameStateProxy(_gameStateOrigin, _settings.GameSettings.configsResources);
 		}
 
 		public Observable<bool> SaveGameState()

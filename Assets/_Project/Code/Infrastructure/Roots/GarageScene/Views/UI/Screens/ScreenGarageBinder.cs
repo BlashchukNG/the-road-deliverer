@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Infrastructure.State.GameResources;
 using Infrastructure.State.GameResources.View;
@@ -42,9 +43,9 @@ namespace Infrastructure.Roots.GarageScene.Views.UI.Screens
 		private void CreateResource(ResourceViewModel resource)
 		{
 			var prefab = Resources.Load<ResourceBinder>($"prefabs/ui/game resources/{resource.TypeID}");
+			if (prefab == null) throw new Exception($"Resource prefab {resource.TypeID} not found");
 			var binder = Instantiate(prefab, _rootResouces);
 			binder.Bind(resource);
-			
 			_resources[resource.Type] = binder;
 		}
 

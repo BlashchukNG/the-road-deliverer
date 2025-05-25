@@ -89,5 +89,7 @@ MonoBehaviour:
             level: 10
             progress: 0
             modificator: 1
-  configsResources: []
+  configsResources:
+  - {fileID: 11400000, guid: 9dd373791c528be4e9ac4cfe3e4de1fb, type: 2}
+  - {fileID: 11400000, guid: fb22595bbcf837348bde8ba0a9d386c5, type: 2}
   configPlayer: {fileID: 11400000, guid: 4ba3d7d0ac92a57428bbfe8d64bcac2b, type: 2}

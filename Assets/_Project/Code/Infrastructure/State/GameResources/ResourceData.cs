@@ -1,19 +1,20 @@
 using System;
+using Infrastructure.State.GameResources.Configs;
 
 namespace Infrastructure.State.GameResources
 {
 	[Serializable]
-	public sealed class ResourceData : ICloneable
+	public sealed class ResourceData
 	{
 		public string typeId;
-		
-		//переработать!
-		public string titleLocKey;
-		public string descriptionLocKey;
-		
 		public ResourceType type;
 		public int amount;
-		
-		public object Clone() => MemberwiseClone();
+
+		public ResourceData(ResourceConfig config)
+		{
+			typeId = config.typeId;
+			type = config.type;
+			amount = config.amount;
+		}
 	}
 }

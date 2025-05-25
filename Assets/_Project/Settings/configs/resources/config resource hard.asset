@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a42465fc42046578629a1124c686401, type: 3}
-  m_Name: config resouce hard
+  m_Name: config resource hard
   m_EditorClassIdentifier: 
-  resource:
-    titleLocKey: 
-    descriptionLocKey: 
-    type: 1
-    amount: 0
+  typeId: resource hard
+  titleLocKey: loc_resource_name_type_hard
+  descriptionLocKey: loc_resource_description_type_hard
+  type: 1
+  amount: 0

@@ -43,8 +43,8 @@ namespace Infrastructure.State.CMD.Handlers.GameResources
 
 		private ResourceProxy CreateNewResource(ResourceType requiredType)
 		{
-			var config = _diContainer.Resolve<ISettingsProvider>().GameSettings.configsResources.First(r => r.resource.type == requiredType);
-			var newResource = new ResourceProxy(config.resource.Clone() as ResourceData);
+			var config = _diContainer.Resolve<ISettingsProvider>().GameSettings.configsResources.First(r => r.type == requiredType);
+			var newResource = new ResourceProxy(new ResourceData(config), config);
 			
 			_dameStateProxy.GameState.Resources.Add(newResource);
 			
