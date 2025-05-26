@@ -12,7 +12,6 @@ namespace Infrastructure.State.GameResources.View
 
 		public void Bind(ResourceViewModel viewModel)
 		{
-			print(1);
 			_subscriptions.Add(viewModel.Amount.Subscribe(a => _tAmount.text = $"{a}"));
 		}
 

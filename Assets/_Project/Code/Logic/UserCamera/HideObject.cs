@@ -15,7 +15,7 @@ namespace Logic.UserCamera
 		public void Show()
 		{
 			foreach (var r in _renderers)
-				r.enabled = true;
+				r.enabled = true;	
 		}
 	}
 }

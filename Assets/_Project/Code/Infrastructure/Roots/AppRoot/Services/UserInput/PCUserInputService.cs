@@ -18,6 +18,7 @@ namespace Infrastructure.Roots.AppRoot.Services.UserInput
 		public event Action<Vector2> onMouseButtonRight = v => { };
 		public event Action<Vector2> onMouseButtonRightUp = v => { };
 		public event Action onSaveGame = () => { };
+		public event Action onTryInteract = () => { };
 		public event Action onWalkToggled = () => { };
 		public event Action onSprintActivated = () => { };
 		public event Action onSprintDeactivated = () => { };
@@ -52,8 +53,8 @@ namespace Infrastructure.Roots.AppRoot.Services.UserInput
 			if (Input.GetMouseButton(1)) onMouseButtonRight.Invoke(Input.mousePosition);
 			if (Input.GetMouseButtonUp(1)) onMouseButtonRightUp.Invoke(Input.mousePosition);
 
+			if (Input.GetKeyDown(KeyCode.E)) onTryInteract.Invoke();
 			if (Input.GetKeyDown(KeyCode.Space)) onJumpPerformed.Invoke();
-
 			if (Input.GetKeyDown(KeyCode.X)) onWalkToggled.Invoke();
 
 			if (Input.GetKeyDown(KeyCode.LeftShift)) onSprintActivated.Invoke();
@@ -61,8 +62,8 @@ namespace Infrastructure.Roots.AppRoot.Services.UserInput
 
 			if (Input.GetKeyDown(KeyCode.LeftControl)) onCrouchActivated.Invoke();
 			if (Input.GetKeyUp(KeyCode.LeftControl)) onCrouchDeactivated.Invoke();
-			
-			if(Input.GetKeyDown(KeyCode.F5)) onSaveGame.Invoke();
+
+			if (Input.GetKeyDown(KeyCode.F5)) onSaveGame.Invoke();
 		}
 	}
 }
