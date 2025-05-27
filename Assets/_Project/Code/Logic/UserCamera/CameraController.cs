@@ -3,6 +3,7 @@ using Infrastructure.Roots.AppRoot.Services.Updater;
 using Infrastructure.Roots.AppRoot.Services.UserInput;
 using Infrastructure.State;
 using Infrastructure.State.Entities.UserCamera;
+using Logic.InteractableEntities.MouseInteractables.Abstract;
 using UnityEngine;
 
 namespace Logic.UserCamera
@@ -23,8 +24,11 @@ namespace Logic.UserCamera
 
 		public CameraController SetInput(DIContainer diContainer)
 		{
-			_input = diContainer.Resolve<IUserInputService>();
 			_settings = diContainer.Resolve<IGameStateProvider>().GameState.CameraSettings;
+
+			_input = diContainer.Resolve<IUserInputService>();
+			_input.onMouseButtonLeft += CheckInteractables;
+
 
 			diContainer.Resolve<IUpdateService>().Add(this);
 			return this;
@@ -43,6 +47,18 @@ namespace Logic.UserCamera
 			UpdatePosition(delta);
 		}
 
+		private void CheckInteractables(Vector2 position)
+		{
+			var ray = Camera.ScreenPointToRay(position);
+			if (Physics.Raycast(ray, out var hit, 100, LayerMask.GetMask("mouse interactable")))
+			{
+				if (hit.collider.TryGetComponent(out BaseMouseInteractableObject obj))
+				{
+					obj.Interact();
+				}
+			}
+		}
+
 		public void FixedTick(float delta)
 		{
 			if (Physics.Linecast(transform.position, new Vector3(_followTarget.position.x, _followTarget.position.y + 1, _followTarget.position.z), out var hit, _hideLayerMask))
@@ -54,7 +70,7 @@ namespace Logic.UserCamera
 					_hideObject.Hide();
 				}
 			}
-			else if(_isHidded)
+			else if (_isHidded)
 			{
 				_isHidded = false;
 				_hideObject?.Show();

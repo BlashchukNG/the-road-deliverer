@@ -30,13 +30,15 @@ namespace Logic.InteractableEntities.Doors
 				go.SetActive(false);
 		}
 
-		private void OnMouseUp()
+		private void MouseInteract()
 		{
 			if(_canInteract) Interact();
 		}
 
 		public void Interact()
 		{
+			if(_door.isBusy) return;
+			
 			_isDoorOpen = !_isDoorOpen;
 			_door.SetAction(_isDoorOpen);
 		}

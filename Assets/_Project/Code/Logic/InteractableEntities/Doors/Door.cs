@@ -12,7 +12,8 @@ namespace Logic.InteractableEntities.Doors
 
 		private float _defLeftX;
 		private float _defRightX;
-		private bool _isBusy;
+		
+		public bool isBusy;
 
 
 		private void Awake()
@@ -23,14 +24,14 @@ namespace Logic.InteractableEntities.Doors
 
 		public void SetAction(bool toOpen)
 		{
-			if (_isBusy) return;
+			if (isBusy) return;
 
-			_isBusy = true;
+			isBusy = true;
 			if (toOpen)
 			{
 				_partLeft.DOLocalMoveX(_targetLeftX, _duration)
 				         .SetEase(Ease.Linear)
-				         .OnComplete(() => _isBusy = false);
+				         .OnComplete(() => isBusy = false);
 				_partRight.DOLocalMoveX(_targetRightX, _duration)
 				          .SetEase(Ease.Linear);
 			}
@@ -38,7 +39,7 @@ namespace Logic.InteractableEntities.Doors
 			{
 				_partLeft.DOLocalMoveX(_defLeftX, _duration)
 				         .SetEase(Ease.Linear)
-				         .OnComplete(() => _isBusy = false);
+				         .OnComplete(() => isBusy = false);
 				_partRight.DOLocalMoveX(_defRightX, _duration)
 				          .SetEase(Ease.Linear);
 			}
