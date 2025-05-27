@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 661413345957296929}
+  _followTarget: {fileID: 0}
+  _hideLayerMask:
+    serializedVersion: 2
+    m_Bits: 576
 --- !u!1 &9092048897987144393
 GameObject:
   m_ObjectHideFlags: 0

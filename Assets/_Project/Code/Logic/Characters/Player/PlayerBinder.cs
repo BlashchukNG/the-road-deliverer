@@ -19,12 +19,15 @@ namespace Logic.Characters.Player
 		[SerializeField] private Animator _animator;
 		[SerializeField] private Transform _frontRayPos;
 		[SerializeField] private Transform _rearRayPos;
+		
+		private PlayerViewModel _viewModel;
 
 		private void OnDestroy() => onDestroy?.Invoke();
 
 		public void Bind(PlayerViewModel viewModel, CameraController camera)
 		{
-			viewModel.AttachReferences(this, camera);
+			_viewModel = viewModel;
+			_viewModel.AttachReferences(this, camera);
 		}
 	}
 }

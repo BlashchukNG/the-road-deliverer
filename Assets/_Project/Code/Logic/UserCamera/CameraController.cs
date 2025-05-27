@@ -7,23 +7,25 @@ using UnityEngine;
 
 namespace Logic.UserCamera
 {
-	public sealed class CameraController : MonoBehaviour, ILateTick
+	public sealed class CameraController : MonoBehaviour, ILateTick, IFixedTick
 	{
 		public Camera Camera => _camera;
 
 		[SerializeField] private Camera _camera;
 		[SerializeField] private Transform _followTarget;
+		[SerializeField] private LayerMask _hideLayerMask;
 
 		private IUserInputService _input;
 		private CameraSettingsDataProxy _settings;
 		private float _targetDistance;
-
+		private HideObject _hideObject;
+		private bool _isHidded;
 
 		public CameraController SetInput(DIContainer diContainer)
 		{
 			_input = diContainer.Resolve<IUserInputService>();
 			_settings = diContainer.Resolve<IGameStateProvider>().GameState.CameraSettings;
-			
+
 			diContainer.Resolve<IUpdateService>().Add(this);
 			return this;
 		}
@@ -33,12 +35,30 @@ namespace Logic.UserCamera
 			_followTarget = target;
 			return this;
 		}
-		
+
 		public void LateTick(float delta)
 		{
 			HandleRotation(delta);
 			HandleZoom(delta);
 			UpdatePosition(delta);
+		}
+
+		public void FixedTick(float delta)
+		{
+			if (Physics.Linecast(transform.position, new Vector3(_followTarget.position.x, _followTarget.position.y + 1, _followTarget.position.z), out var hit, _hideLayerMask))
+			{
+				if (hit.collider.TryGetComponent(out HideObject hideObject))
+				{
+					_isHidded = true;
+					_hideObject = hideObject;
+					_hideObject.Hide();
+				}
+			}
+			else if(_isHidded)
+			{
+				_isHidded = false;
+				_hideObject?.Show();
+			}
 		}
 
 		private void HandleRotation(float delta)
@@ -71,11 +91,13 @@ namespace Logic.UserCamera
 		}
 
 		public Vector3 GetCameraForwardZeroedYNormalised() => GetCameraForwardZeroedY().normalized;
+
 		public Vector3 GetCameraRightZeroedYNormalised() => new Vector3(transform.right.x, 0, transform.right.z);
 
 		public Vector3 GetCameraForward() => transform.forward;
+
 		public Vector3 GetCameraForwardZeroedY() => new(transform.forward.x, 0, transform.forward.z);
-		
+
 		public float GetCameraTiltX() => transform.eulerAngles.x;
 	}
 }

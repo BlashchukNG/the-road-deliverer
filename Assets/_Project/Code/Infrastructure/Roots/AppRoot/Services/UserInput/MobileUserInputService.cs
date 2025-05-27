@@ -18,6 +18,7 @@ namespace Infrastructure.Roots.AppRoot.Services.UserInput
 		public event Action<Vector2> onMouseButtonRight;
 		public event Action<Vector2> onMouseButtonRightUp;
 		public event Action onSaveGame;
+		public event Action onTryInteract;
 		public event Action onWalkToggled;
 		public event Action onSprintActivated;
 		public event Action onSprintDeactivated;

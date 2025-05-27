@@ -10,9 +10,9 @@ namespace Logic.Characters.Player
 {
 	public sealed class PlayerViewModel : ITick
 	{
+		private readonly DIContainer _diContainer;
 		private readonly IUserInputService _input;
 		private readonly Locomotion _locomotion;
-		private readonly DIContainer _diContainer;
 		private readonly PlayerBehavior _behaviour;
 
 		public PlayerViewModel(DIContainer diContainer)

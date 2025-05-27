@@ -14,10 +14,10 @@ TagManager:
   - ground
   - player
   - character
-  - blocked camera ray layout
-  - 
-  - 
-  - 
+  - roof
+  - door
+  - walls
+  - interactable
   - 
   - 
   - 
